@@ -43,6 +43,39 @@
         ]
       }
     },
+    "/video/translate/cost": {
+      "get": {
+        "operationId": "VideoController_cost",
+        "parameters": [
+          {
+            "name": "X-API-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "API key needed to authorize requests."
+          },
+          {
+            "name": "videoUrl",
+            "required": true,
+            "in": "query",
+            "description": "A url to the video file to be translated -- must be publicly accessible",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "video"
+        ]
+      }
+    },
     "/video": {
       "post": {
         "operationId": "VideoController_create",
@@ -66,6 +99,50 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/CreateVideoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Video"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "video"
+        ]
+      }
+    },
+    "/video/translate": {
+      "post": {
+        "operationId": "VideoController_create",
+        "summary": "",
+        "description": "Submit a set of urls to publically hosted audio and video files or to YouTube videos. Our synchronizer will sync the video's lip movements to match the audio and return the synced video.",
+        "parameters": [
+          {
+            "name": "X-API-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "API key needed to authorize requests."
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "The audio + video data to be synced. Set synergize = false to skip our synergizer post-processor for a 10x speedup, but w/ a degredation in output quality.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TranslateVideoDto"
               }
             }
           }
@@ -128,25 +205,45 @@
         ]
       }
     },
-    "/speech-synthesis": {
-      "post": {
-        "operationId": "SpeechSynthesisController_synthesize",
-        "parameters": [],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/SynthesizeSpeechDto"
+    "/video/translate/{id}": {
+      "get": {
+        "operationId": "VideoController_findOne",
+        "summary": "",
+        "description": "Use the video ID from the POST request to check video status. Keep checking until status is 'completed' and a download URL is provided.",
+        "parameters": [
+          {
+            "name": "X-API-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "API key needed to authorize requests."
+          },
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Returns video status and URL to download from.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Video"
+                }
               }
             }
           }
         },
-        "responses": {
-          "201": {
-            "description": ""
-          }
-        }
+        "tags": [
+          "video"
+        ]
       }
     }
   },
@@ -208,6 +305,41 @@
           "model"
         ]
       },
+      "TranslateVideoDto": {
+        "type": "object",
+        "properties": {
+          "videoUrl": {
+            "type": "string",
+            "description": "A url to the video file to be translated and synchronized -- must be publicly accessible",
+            "format": "uri"
+          },
+          "targetLanguage": {
+            "type": "string",
+            "description": "Target language to translate the video to"
+          },
+          "maxCredits": {
+            "type": "integer",
+            "description": "Maximum number of credits to use for video generation. If job exceeds this value, the job will be aborted",
+            "nullable": true
+          },
+          "webhookUrl": {
+            "type": "string",
+            "description": "A url to send a notification to upon completion of video generation",
+            "format": "uri",
+            "nullable": true
+          },
+          "model": {
+            "type": "string",
+            "description": "The model to use for video generation. Options are sync-1 and sync-1.5",
+            "default": "sync-1",
+            "enum": ["sync-1", "sync-1.5"]
+          }
+        },
+        "required": [
+          "videoUrl",
+          "targetLanguage"
+        ]
+      },
       "Video": {
         "type": "object",
         "properties": {
@@ -249,10 +381,6 @@
           "synergize",
           "credits_deducted"
         ]
-      },
-      "SynthesizeSpeechDto": {
-        "type": "object",
-        "properties": {}
       }
     }
   }
