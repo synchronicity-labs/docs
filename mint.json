@@ -15,7 +15,7 @@
       "to": "#07C983"
     }
   },
-  "topbarLinks": [
+      "topbarLinks": [
     {
       "name": "Support",
       "url": "mailto:hi@mintlify.com"
@@ -79,7 +79,10 @@
       "pages": [
         "api-reference/endpoint/video/get-lip-sync",
         "api-reference/endpoint/video/get-lip-sync-cost",
-        "api-reference/endpoint/video/post-lip-sync"
+        "api-reference/endpoint/video/post-lip-sync",
+        "api-reference/endpoint/video/get-translate",
+        "api-reference/endpoint/video/get-translate-cost",
+        "api-reference/endpoint/video/post-translate"
       ]
     }
   ],
