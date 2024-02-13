@@ -1,194 +1,230 @@
 {
-  "openapi": "3.0.1",
-  "info": {
-    "title": "OpenAPI Plant Store",
-    "description": "A sample API that uses a plant store as an example to demonstrate features in the OpenAPI specification",
-    "license": {
-      "name": "MIT"
-    },
-    "version": "1.0.0"
-  },
-  "servers": [
-    {
-      "url": "http://sandbox.mintlify.com"
-    }
-  ],
-  "security": [
-    {
-      "bearerAuth": []
-    }
-  ],
+  "openapi": "3.0.0",
   "paths": {
-    "/plants": {
+    "/video/cost": {
       "get": {
-        "description": "Returns all plants from the system that the user has access to",
+        "operationId": "VideoController_cost",
         "parameters": [
           {
-            "name": "limit",
+            "name": "audioUrl",
+            "required": true,
             "in": "query",
-            "description": "The maximum number of results to return",
+            "description": "A url to the audio file to be synchronized -- must be publicly accessible",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
+            }
+          },
+          {
+            "name": "videoUrl",
+            "required": true,
+            "in": "query",
+            "description": "A url to the video file to be synchronized -- must be publicly accessible",
+            "schema": {
+              "type": "string"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "Plant response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Plant"
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
+            "description": ""
           }
-        }
-      },
+        },
+        "tags": [
+          "video"
+        ]
+      }
+    },
+    "/video": {
       "post": {
-        "description": "Creates a new plant in the store",
+        "operationId": "VideoController_create",
+        "summary": "",
+        "description": "Submit a set of urls to publically hosted audio and video files or to YouTube videos. Our synchronizer will sync the video's lip movements to match the audio and return the synced video.",
+        "parameters": [],
         "requestBody": {
-          "description": "Plant to add to the store",
+          "required": true,
+          "description": "The audio + video data to be synced. Set synergize = false to skip our synergizer post-processor for a 10x speedup, but w/ a degredation in output quality.",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewPlant"
+                "$ref": "#/components/schemas/CreateVideoDto"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
-          "200": {
-            "description": "plant response",
+          "default": {
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Plant"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "$ref": "#/components/schemas/Video"
                 }
               }
             }
           }
-        }
+        },
+        "tags": [
+          "video"
+        ]
       }
     },
-    "/plants/{id}": {
-      "delete": {
-        "description": "Deletes a single plant based on the ID supplied",
+    "/video/{id}": {
+      "get": {
+        "operationId": "VideoController_findOne",
+        "summary": "",
+        "description": "Use the video ID from the POST request to check video status. Keep checking until status is 'completed' and a download URL is provided.",
         "parameters": [
           {
             "name": "id",
-            "in": "path",
-            "description": "ID of plant to delete",
             "required": true,
+            "in": "path",
             "schema": {
-              "type": "integer",
-              "format": "int64"
+              "type": "string"
             }
           }
         ],
         "responses": {
-          "204": {
-            "description": "Plant deleted",
-            "content": {}
-          },
-          "400": {
-            "description": "unexpected error",
+          "default": {
+            "description": "Returns video status and URL to download from.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "$ref": "#/components/schemas/Video"
                 }
               }
             }
+          }
+        },
+        "tags": [
+          "video"
+        ]
+      }
+    },
+    "/speech-synthesis": {
+      "post": {
+        "operationId": "SpeechSynthesisController_synthesize",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SynthesizeSpeechDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
           }
         }
       }
     }
   },
+  "info": {
+    "title": "Synchronize API",
+    "description": "Synchronize API allows you to lipsync a video to any audio in any language.",
+    "version": "1.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
   "components": {
-    "schemas": {
-      "Plant": {
-        "required": [
-          "name"
-        ],
-        "type": "object",
-        "properties": {
-          "name": {
-            "description": "The name of the plant",
-            "type": "string"
-          },
-          "tag": {
-            "description": "Tag to specify the type",
-            "type": "string"
-          }
-        }
-      },
-      "NewPlant": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/Plant"
-          },
-          {
-            "required": [
-              "id"
-            ],
-            "type": "object",
-            "properties": {
-              "id": {
-                "description": "Identification number of the plant",
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ]
-      },
-      "Error": {
-        "required": [
-          "error",
-          "message"
-        ],
-        "type": "object",
-        "properties": {
-          "error": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "message": {
-            "type": "string"
-          }
-        }
+    "securitySchemes": {
+      "apiKey": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-api-key"
       }
     },
-    "securitySchemes": {
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer"
+    "schemas": {
+      "CreateVideoDto": {
+        "type": "object",
+        "properties": {
+          "audioUrl": {
+            "type": "string",
+            "description": "A url to the audio file to be synchronized -- must be publicly accessible"
+          },
+          "videoUrl": {
+            "type": "string",
+            "description": "A url to the video file to be synchronized -- must be publicly accessible"
+          },
+          "synergize": {
+            "type": "boolean",
+            "description": "A flag to enable / disable post-processing",
+            "default": true
+          },
+          "maxCredits": {
+            "type": "number",
+            "description": "Maximum number of credits to use for video generation. If job exceeds this value, the job will be aborted",
+            "default": null
+          },
+          "webhookUrl": {
+            "type": "string",
+            "description": "A url to send a notification to upon completion of video generation",
+            "default": null
+          },
+          "model": {
+            "type": "string",
+            "description": "The model to use for video generation. Options are sync-1 and sync-1.5",
+            "default": "sync-1"
+          }
+        },
+        "required": [
+          "audioUrl",
+          "videoUrl",
+          "synergize",
+          "maxCredits",
+          "webhookUrl",
+          "model"
+        ]
+      },
+      "Video": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "A unique identifier for the video."
+          },
+          "url": {
+            "type": "string",
+            "description": "A URL which can be used to download the video."
+          },
+          "original_video_url": {
+            "type": "string",
+            "description": "The original URL of the video that was submitted."
+          },
+          "original_audio_url": {
+            "type": "string",
+            "description": "The original URL of the audio that was submitted."
+          },
+          "status": {
+            "type": "string",
+            "description": "The status of the video."
+          },
+          "synergize": {
+            "type": "boolean",
+            "description": "A flag to enable / disable post-processing"
+          },
+          "credits_deducted": {
+            "type": "number",
+            "description": "The number of credits deducted in order to process the video."
+          }
+        },
+        "required": [
+          "id",
+          "url",
+          "original_video_url",
+          "original_audio_url",
+          "status",
+          "synergize",
+          "credits_deducted"
+        ]
+      },
+      "SynthesizeSpeechDto": {
+        "type": "object",
+        "properties": {}
       }
     }
   }
