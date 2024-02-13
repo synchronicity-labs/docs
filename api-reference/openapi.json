@@ -6,6 +6,15 @@
         "operationId": "VideoController_cost",
         "parameters": [
           {
+            "name": "X-API-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "API key needed to authorize requests."
+          },
+          {
             "name": "audioUrl",
             "required": true,
             "in": "query",
@@ -39,7 +48,17 @@
         "operationId": "VideoController_create",
         "summary": "",
         "description": "Submit a set of urls to publically hosted audio and video files or to YouTube videos. Our synchronizer will sync the video's lip movements to match the audio and return the synced video.",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "X-API-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "API key needed to authorize requests."
+          }
+        ],
         "requestBody": {
           "required": true,
           "description": "The audio + video data to be synced. Set synergize = false to skip our synergizer post-processor for a 10x speedup, but w/ a degredation in output quality.",
@@ -74,6 +93,15 @@
         "summary": "",
         "description": "Use the video ID from the POST request to check video status. Keep checking until status is 'completed' and a download URL is provided.",
         "parameters": [
+          {
+            "name": "X-API-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "API key needed to authorize requests."
+          },
           {
             "name": "id",
             "required": true,
