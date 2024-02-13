@@ -109,7 +109,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Video"
+                  "$ref": "#/components/schemas/VideoInitial"
                 }
               }
             }
@@ -153,7 +153,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Video"
+                  "$ref": "#/components/schemas/TranslationJobInitial"
                 }
               }
             }
@@ -380,6 +380,174 @@
           "status",
           "synergize",
           "credits_deducted"
+        ]
+      },
+      "VideoInitial": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "A unique identifier for the video."
+          },
+          "url": {
+            "type": "string",
+            "description": "A URL which can be used to download the video.",
+            "nullable": true
+          },
+          "original_video_url": {
+            "type": "string",
+            "description": "The original URL of the video that was submitted."
+          },
+          "original_audio_url": {
+            "type": "string",
+            "description": "The original URL of the audio that was submitted."
+          },
+          "status": {
+            "type": "string",
+            "description": "The status of the video."
+          },
+          "synergize": {
+            "type": "boolean",
+            "description": "A flag to enable / disable post-processing"
+          }
+        },
+        "required": [
+          "id",
+          "original_video_url",
+          "original_audio_url",
+          "status",
+          "synergize"
+        ]
+      },
+      "VideoExtended": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "A unique identifier for the video."
+          },
+          "url": {
+            "type": "string",
+            "description": "A URL which can be used to download the video.",
+            "nullable": true
+          },
+          "original_video_url": {
+            "type": "string",
+            "description": "The original URL of the video that was submitted."
+          },
+          "original_audio_url": {
+            "type": "string",
+            "description": "The original URL of the audio that was submitted."
+          },
+          "status": {
+            "type": "string",
+            "description": "The status of the video."
+          },
+          "synergize": {
+            "type": "boolean",
+            "description": "A flag to enable / disable post-processing"
+          },
+          "credits_deducted": {
+            "type": "number",
+            "description": "The number of credits deducted for the video."
+          }
+        },
+        "required": [
+          "id",
+          "original_video_url",
+          "original_audio_url",
+          "status",
+          "synergize",
+          "credits_deducted"
+        ]
+      },
+      "TranslationJobInitial": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "A unique identifier for the translation job."
+          },
+          "video_url": {
+            "type": "string",
+            "description": "A URL which can be used to download the video.",
+            "nullable": true
+          },
+          "original_video_url": {
+            "type": "string",
+            "description": "The original URL of the video that was submitted."
+          },
+          "target_language": {
+            "type": "string",
+            "description": "The language into which the video is being translated.",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "description": "The status of the translation job."
+          },
+          "step": {
+            "type": "string",
+            "description": "The step of the translation job."
+          }
+        },
+        "required": [
+          "id",
+          "original_video_url",
+          "status",
+          "step"
+        ]
+      },
+      "TranslationJobExtended": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "A unique identifier for the translation job."
+          },
+          "video_url": {
+            "type": "string",
+            "description": "A URL which can be used to download the video.",
+            "nullable": true
+          },
+          "audio_url": {
+            "type": "string",
+            "description": "A URL which can be used to download the audio.",
+            "nullable": true
+          },
+          "transcript_url": {
+            "type": "string",
+            "description": "A URL to access the transcript of the video.",
+            "nullable": true
+          },
+          "original_video_url": {
+            "type": "string",
+            "description": "The original URL of the video that was submitted."
+          },
+          "source_language": {
+            "type": "string",
+            "description": "The source language of the video.",
+            "nullable": true
+          },
+          "target_language": {
+            "type": "string",
+            "description": "The language into which the video is being translated.",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "description": "The status of the translation job."
+          },
+          "step": {
+            "type": "string",
+            "description": "The step of the translation job."
+          }
+        },
+        "required": [
+          "id",
+          "original_video_url",
+          "status",
+          "step"
         ]
       }
     }
