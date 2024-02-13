@@ -75,11 +75,11 @@
       ]
     },
     {
-      "group": "Endpoint Examples",
+      "group": "Video",
       "pages": [
-        "api-reference/endpoint/video/get-video",
-        "api-reference/endpoint/video/get-videocost",
-        "api-reference/endpoint/video/post-video"
+        "api-reference/endpoint/video/get-lip-sync",
+        "api-reference/endpoint/video/get-lip-sync-cost",
+        "api-reference/endpoint/video/post-lip-sync"
       ]
     }
   ],
