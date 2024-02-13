@@ -87,9 +87,10 @@
     }
   ],
   "footerSocials": {
-    "twitter": "https://twitter.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
+    "twitter": "https://twitter.com/syncdotso",
+    "github": "https://github.com/synchronicity-labs",
+    "linkedin": "https://www.linkedin.com/company/synclabs-ai",
+    "slack": "https://syncbetatesters.slack.com/ssb/redirect#/shared-invite/email"
   },
   "openapi": ["/api-reference/openapi.json"]
 }
