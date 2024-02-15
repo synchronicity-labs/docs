@@ -6,15 +6,6 @@
         "operationId": "VideoController_cost",
         "parameters": [
           {
-            "name": "X-API-Key",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "description": "API key needed to authorize requests."
-          },
-          {
             "name": "audioUrl",
             "required": true,
             "in": "query",
@@ -43,55 +34,12 @@
         ]
       }
     },
-    "/video/translate/cost": {
-      "get": {
-        "operationId": "VideoController_cost",
-        "parameters": [
-          {
-            "name": "X-API-Key",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "description": "API key needed to authorize requests."
-          },
-          {
-            "name": "videoUrl",
-            "required": true,
-            "in": "query",
-            "description": "A url to the video file to be translated -- must be publicly accessible",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "video"
-        ]
-      }
-    },
     "/video": {
       "post": {
-        "operationId": "VideoController_create",
+        "operationId": "VideoController_lipSync",
         "summary": "",
         "description": "Submit a set of urls to publically hosted audio and video files or to YouTube videos. Our synchronizer will sync the video's lip movements to match the audio and return the synced video.",
-        "parameters": [
-          {
-            "name": "X-API-Key",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "description": "API key needed to authorize requests."
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "required": true,
           "description": "The audio + video data to be synced. Set synergize = false to skip our synergizer post-processor for a 10x speedup, but w/ a degredation in output quality.",
@@ -120,25 +68,71 @@
         ]
       }
     },
-    "/video/translate": {
-      "post": {
-        "operationId": "VideoController_create",
+    "/video/{id}": {
+      "get": {
+        "operationId": "VideoController_getLipSyncJob",
         "summary": "",
-        "description": "Submit a set of urls to publically hosted audio and video files or to YouTube videos. Our synchronizer will sync the video's lip movements to match the audio and return the synced video.",
+        "description": "Use the video ID from the POST request to check video status. Keep checking until status is 'completed' and a download URL is provided.",
         "parameters": [
           {
-            "name": "X-API-Key",
-            "in": "header",
+            "name": "id",
             "required": true,
+            "in": "path",
             "schema": {
               "type": "string"
-            },
-            "description": "API key needed to authorize requests."
+            }
           }
         ],
+        "responses": {
+          "default": {
+            "description": "Returns video status and URL to download from.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VideoExtended"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "video"
+        ]
+      }
+    },
+    "/video/translate/cost": {
+      "get": {
+        "operationId": "VideoController_translationCost",
+        "parameters": [
+          {
+            "name": "videoUrl",
+            "required": true,
+            "in": "query",
+            "description": "A url to the video file to be synchronized -- must be publicly accessible",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "video"
+        ]
+      }
+    },
+    "/video/translate": {
+      "post": {
+        "operationId": "VideoController_translate",
+        "summary": "",
+        "description": "Translates and synchronizes the given video to the specified target language.",
+        "parameters": [],
         "requestBody": {
           "required": true,
-          "description": "The audio + video data to be synced. Set synergize = false to skip our synergizer post-processor for a 10x speedup, but w/ a degredation in output quality.",
+          "description": "Required data for translating and synchronizing video. Includes video URL, target language, and optional parameters for model selection, webhook integration, and credit limits.",
           "content": {
             "application/json": {
               "schema": {
@@ -148,8 +142,8 @@
           }
         },
         "responses": {
-          "default": {
-            "description": "",
+          "200": {
+            "description": "The translation job has been successfully created.",
             "content": {
               "application/json": {
                 "schema": {
@@ -164,62 +158,12 @@
         ]
       }
     },
-    "/video/{id}": {
-      "get": {
-        "operationId": "VideoController_findOne",
-        "summary": "",
-        "description": "Use the video ID from the POST request to check video status. Keep checking until status is 'completed' and a download URL is provided.",
-        "parameters": [
-          {
-            "name": "X-API-Key",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "description": "API key needed to authorize requests."
-          },
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "Returns video status and URL to download from.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Video"
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "video"
-        ]
-      }
-    },
     "/video/translate/{id}": {
       "get": {
-        "operationId": "VideoController_findOne",
+        "operationId": "VideoController_getTranslationJob",
         "summary": "",
         "description": "Use the video ID from the POST request to check video status. Keep checking until status is 'completed' and a download URL is provided.",
         "parameters": [
-          {
-            "name": "X-API-Key",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "description": "API key needed to authorize requests."
-          },
           {
             "name": "id",
             "required": true,
@@ -235,7 +179,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Video"
+                  "$ref": "#/components/schemas/TranslationJobExtended"
                 }
               }
             }
@@ -305,83 +249,6 @@
           "model"
         ]
       },
-      "TranslateVideoDto": {
-        "type": "object",
-        "properties": {
-          "videoUrl": {
-            "type": "string",
-            "description": "A url to the video file to be translated and synchronized -- must be publicly accessible",
-            "format": "uri"
-          },
-          "targetLanguage": {
-            "type": "string",
-            "description": "Target language to translate the video to"
-          },
-          "maxCredits": {
-            "type": "integer",
-            "description": "Maximum number of credits to use for video generation. If job exceeds this value, the job will be aborted",
-            "nullable": true
-          },
-          "webhookUrl": {
-            "type": "string",
-            "description": "A url to send a notification to upon completion of video generation",
-            "format": "uri",
-            "nullable": true
-          },
-          "model": {
-            "type": "string",
-            "description": "The model to use for video generation. Options are sync-1 and sync-1.5",
-            "default": "sync-1",
-            "enum": ["sync-1", "sync-1.5"]
-          }
-        },
-        "required": [
-          "videoUrl",
-          "targetLanguage"
-        ]
-      },
-      "Video": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "A unique identifier for the video."
-          },
-          "url": {
-            "type": "string",
-            "description": "A URL which can be used to download the video."
-          },
-          "original_video_url": {
-            "type": "string",
-            "description": "The original URL of the video that was submitted."
-          },
-          "original_audio_url": {
-            "type": "string",
-            "description": "The original URL of the audio that was submitted."
-          },
-          "status": {
-            "type": "string",
-            "description": "The status of the video."
-          },
-          "synergize": {
-            "type": "boolean",
-            "description": "A flag to enable / disable post-processing"
-          },
-          "credits_deducted": {
-            "type": "number",
-            "description": "The number of credits deducted in order to process the video."
-          }
-        },
-        "required": [
-          "id",
-          "url",
-          "original_video_url",
-          "original_audio_url",
-          "status",
-          "synergize",
-          "credits_deducted"
-        ]
-      },
       "VideoInitial": {
         "type": "object",
         "properties": {
@@ -391,8 +258,7 @@
           },
           "url": {
             "type": "string",
-            "description": "A URL which can be used to download the video.",
-            "nullable": true
+            "description": "A URL which can be used to download the video."
           },
           "original_video_url": {
             "type": "string",
@@ -428,8 +294,7 @@
           },
           "url": {
             "type": "string",
-            "description": "A URL which can be used to download the video.",
-            "nullable": true
+            "description": "A URL which can be used to download the video."
           },
           "original_video_url": {
             "type": "string",
@@ -461,6 +326,41 @@
           "credits_deducted"
         ]
       },
+      "TranslateVideoDto": {
+        "type": "object",
+        "properties": {
+          "videoUrl": {
+            "type": "string",
+            "description": "A url to the video file to be translated and synchronized -- must be publicly accessible"
+          },
+          "targetLanguage": {
+            "type": "string",
+            "description": "Target language to translate the video to"
+          },
+          "maxCredits": {
+            "type": "number",
+            "description": "Maximum number of credits to use for video generation. If job exceeds this value, the job will be aborted",
+            "default": null
+          },
+          "webhookUrl": {
+            "type": "string",
+            "description": "A url to send a notification to upon completion of video generation",
+            "default": null
+          },
+          "model": {
+            "type": "string",
+            "description": "The model to use for video generation. Options are sync-1 and sync-1.5",
+            "default": "sync-1"
+          }
+        },
+        "required": [
+          "videoUrl",
+          "targetLanguage",
+          "maxCredits",
+          "webhookUrl",
+          "model"
+        ]
+      },
       "TranslationJobInitial": {
         "type": "object",
         "properties": {
@@ -470,8 +370,7 @@
           },
           "video_url": {
             "type": "string",
-            "description": "A URL which can be used to download the video.",
-            "nullable": true
+            "description": "A URL which can be used to download the video."
           },
           "original_video_url": {
             "type": "string",
@@ -479,8 +378,7 @@
           },
           "target_language": {
             "type": "string",
-            "description": "The language into which the video is being translated.",
-            "nullable": true
+            "description": "The language into which the video is being translated."
           },
           "status": {
             "type": "string",
@@ -507,18 +405,15 @@
           },
           "video_url": {
             "type": "string",
-            "description": "A URL which can be used to download the video.",
-            "nullable": true
+            "description": "A URL which can be used to download the video."
           },
           "audio_url": {
             "type": "string",
-            "description": "A URL which can be used to download the audio.",
-            "nullable": true
+            "description": "A URL which can be used to download the audio."
           },
           "transcript_url": {
             "type": "string",
-            "description": "A URL to access the transcript of the video.",
-            "nullable": true
+            "description": "A URL to access the transcript of the video."
           },
           "original_video_url": {
             "type": "string",
@@ -526,13 +421,11 @@
           },
           "source_language": {
             "type": "string",
-            "description": "The source language of the video.",
-            "nullable": true
+            "description": "The source language of the video."
           },
           "target_language": {
             "type": "string",
-            "description": "The language into which the video is being translated.",
-            "nullable": true
+            "description": "The language into which the video is being translated."
           },
           "status": {
             "type": "string",
@@ -545,11 +438,18 @@
         },
         "required": [
           "id",
+          "audio_url",
           "original_video_url",
+          "source_language",
           "status",
           "step"
         ]
       }
     }
-  }
+  },
+  "security": [
+    {
+      "apiKey": []
+    }
+  ]
 }
