@@ -1,0 +1,4 @@
+export declare function isValidImageSrc(src: string): boolean;
+export declare function removeMetadataFromImageSrc(src: string): string;
+export declare function cleanImageSrc(src: string, origin: string): string;
+export default function downloadImage(imageSrc: string, writePath: string, overwrite?: boolean): Promise<void>;
