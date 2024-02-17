@@ -1,6 +1,6 @@
 ---
-title: 'Introduction'
-description: 'learn how to use our apis to modify + synthesize humans in video'
+title: 'Quickstart'
+description: 'make your first request w/ our lipsync api'
 ---
 
 <Note>
@@ -9,36 +9,32 @@ description: 'learn how to use our apis to modify + synthesize humans in video'
   always reflect the latest build.
 </Note>
 
-## welcome
-we're building sota models + hosting them w/ simple apis.
+## generate an api-key
+all our api endpoints expect an X-API-Key header in every request. 
+it's a simple + secure way to authenticate your requests / generate accurate usage metrics across your api keys.
 
-<Card
-  title="sync. openapi spec"
-  icon="leaf"
-  href="https://api.synclabs.so/playground-json"
->
-  View the OpenAPI specification file
-</Card>
+TODO:
+show where to find a key
+show how to make / destroy a key
+FUTURE -> see usage metrics across keys // eg. # of calls, # of mins generated, etc.
 
-## Base URL
+## [POST] make your first request
 
-our apis are built on REST principles. we enforce HTTPS in every request to improve data security, integrity, and privacy.
+TODO:
+show how the request is structured
+show
 
-all requests start w/ the following base URL:
-
-```
-https://api.synclabs.so
-```
-
-all video API endpoints are authenticated using Bearer tokens and picked up from the specification file.
-
-## data request
+## [GET] poll for a response
 
 
 ## Security and Authentication
 
-all our api endpoints expect an X-API-Key header in every request.
+To secure our video API endpoints, we employ X-API-Key authentication. 
+This method is chosen to facilitate a seamless and secure integration process for all client-server communications.
+
+all our api endpoints expect an X-API-Key header in every request. 
 it's a simple + secure way to authenticate your requests / generate accurate usage metrics across your api keys.
+
 
 
 here’s how you include it:

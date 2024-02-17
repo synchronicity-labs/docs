@@ -22,6 +22,10 @@
     {
       "name": "Support",
       "url": "https://mintlify.com/community"
+    },
+    {
+      "name": "API Status",
+      "url": "https://status.synclabs.so/"
     }
   ],
   "topbarCtaButton": {
@@ -41,7 +45,7 @@
       "url": "https://syncbetatesters.slack.com/ssb/redirect#/shared-invite/email"
     },
     {
-      "name": "Blog",
+      "name": "Changelog",
       "icon": "newspaper",
       "url": "https://synclabs.so/blog"
     }
@@ -64,7 +68,9 @@
     {
       "group": "API Documentation",
       "pages": [
-        "api-reference/introduction"
+        "api-reference/introduction",
+        "api-reference/quickstart",
+        "api-reference/webhooks"
       ]
     },
     {
@@ -91,5 +97,5 @@
       "mode": "show"
     }
   },
-  "openapi": ["/api-reference/openapi.json"]
+  "openapi": ["https://api.synclabs.so/playground-json"]
 }
