@@ -3,84 +3,229 @@ title: 'Quickstart'
 description: 'sync. your first video in under 5 minutes'
 ---
 
-## Setup your development
+## signing up
 
-Learn how to update your docs locally and and deploy them to the public.
+joining synclabs is straightforward. we've streamlined our sign-up to get you started with minimal effort. select your preferred method and jump straight into the world of seamless audio-visual synchronization. ready to get started? [sign up here](https://app.synclabs.so/signup).
 
-### Edit and preview
+once signed in, you'll be taken to the lip-sync playground where you can immediately get started with your first video. if you're a developer, you can also access the api documentation to integrate synclabs into your own applications.
+
+### sign up methods
 
 <AccordionGroup>
-  <Accordion icon="github" title="Clone your docs locally">
-    During the onboarding process, we created a repository on your Github with
-    your docs content. You can find this repository on our
-    [dashboard](https://dashboard.mintlify.com). To clone the repository
-    locally, follow these
-    [instructions](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
-    in your terminal.
+  <Accordion icon="wand-magic-sparkles" title="magic link">
+    enter your email, receive a link, click, and you're in. no passwords needed.
   </Accordion>
-  <Accordion icon="rectangle-terminal" title="Preview changes">
-    Previewing helps you make sure your changes look as intended. We built a
-    command line interface to render these changes locally. 1. Install the
-    [Mintlify CLI](https://www.npmjs.com/package/mintlify) to preview the
-    documentation changes locally with this command: ``` npm i -g mintlify ```
-    2. Run the following command at the root of your documentation (where
-    `mint.json` is): ``` mintlify dev ```
+  <Accordion icon="google" title="sign-up with google">
+    use your google account for a one-click sign-up. fast and secure.
+  </Accordion>
+  <Accordion icon="github" title="sign-up with github">
+    for developers, sign up with github for instant access and integration.
   </Accordion>
 </AccordionGroup>
 
-### Deploy your changes
+## subscriptions
+
+after signing up, you will be automotically enrolled in our free tier plan. with the free tier you'll have access to all of our models for 5 minutes of video synchronization with a watermark per month.
+
+if you need more we offer a range of subscription plans to suit your needs. whether you're a casual user or a developer looking to integrate synclabs into your application, we have a plan for you. our plans are designed to be flexible and scalable, so you can upgrade or downgrade at any time. for more information on our plans, visit our [pricing page]( ).
+
+## sync your first video in the playground
+
+ready to bring together your audio and video in harmony? the playground is where the magic happens. it's your sandbox to experiment, learn, and create. syncing your first video is just a few clicks away. here's how to dive in and make your content come alive.
+
+update the below video with a video demo of the playground
+<Frame caption="how to sync a video using the playground">
+  <iframe 
+    width="100%" 
+    height="400" 
+    src="https://www.youtube.com/embed/-5ftITKBapY?si=fSO-i7llw90fBPet" 
+    title="YouTube video player" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    allowfullscreen
+  />
+</Frame>
+
+### media input methods
 
 <AccordionGroup>
+  <Accordion icon="cloud-arrow-up" title="upload">
+    <Steps>
+      <Step title="choose your files">
+        click the upload area to select your video and audio files from your computer or simply drag and drop them in.
 
-<Accordion icon="message-bot" title="Install our Github app">
-  Our Github app automatically deploys your changes to your docs site, so you
-  don't need to manage deployments yourself. You can find the link to install on
-  your [dashboard](https://dashboard.mintlify.com). Once the bot has been
-  successfully installed, there should be a check mark next to the commit hash
-  of the repo.
-</Accordion>
-<Accordion icon="rocket" title="Push your changes">
-  [Commit and push your changes to
-  Git](https://docs.github.com/en/get-started/using-git/pushing-commits-to-a-remote-repository#about-git-push)
-  for your changes to update in your docs site. If you push and don't see that
-  the Github app successfully deployed your changes, you can also manually
-  update your docs through our [dashboard](https://dashboard.mintlify.com).
-</Accordion>
+        you must provide **both a video and audio file**. the video file should be in `mp4` format and the audio file can be in either an `mp3` or `wav` format.
+      </Step>
+      <Step title="select the model and submit">
+        with your video and audio sources ready, it's time to pick a model. select the model that best fits your needs from our growing library.
 
+        click submit to start the syncing process! 🚀 stay tuned as we're continually expanding our model offerings. learn more about our available models [here](/models).
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion icon="youtube" title="youtube">
+    <Steps>
+      <Step title="enter youtube url">
+        paste the YouTube URL into the input field for your video or audio source. this URL can point to any YouTube video that you wish to use as either your video or audio input.
+        
+        after submitting the URL, a popup will appear, prompting you to select whether you want to use the YouTube video for your video source or audio source.
+      </Step>
+      <Step title="choose video or audio">
+        in the popup, choose whether the YouTube URL is for the video or audio part of your sync. this flexibility allows you to mix and match YouTube content with your own, enabling a vast range of creative possibilities.
+
+        remember, you need to provide **both video and audio sources** to proceed with the sync. If you're using YouTube for one source, you can upload the other source using any of the provided methods.
+      </Step>
+      <Step title="select the model and submit">
+        With your video and audio sources ready, it's time to pick a model. select the model that best fits your needs from our growing library and click submit to start the syncing process! 🚀
+        
+        stay tuned as we're continually expanding our model offerings. Learn more about our available models [here](/models).
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion icon="cloud" title="other url">
+    <Steps>
+      <Step title="enter source url">
+        input the URL from your cloud hosting provider into the provided field. this URL can point to any publicly accessible video or audio file you wish to use for syncing.
+        
+        our system will automatically recognizes the file type based on the file name and extension.
+
+        you must provide **both a video and audio file** to proceed with the sync. the video file should be in `mp4` format and the audio file can be in either an `mp3` or `wav` format.
+      </Step>
+      <Step title="select the model and submit">
+        with your video and audio sources set, choose the best model for your project from our extensive library. 
+
+        hit submit to initiate the sync! 🚀 Our model library is continuously growing, offering you more options and capabilities. Discover more about our models [here](/models).
+      </Step>
+    </Steps>
+  </Accordion>
 </AccordionGroup>
 
-## Update your docs
+## sync your first video using the api
 
-Add content directly in your files with MDX syntax and React components. You can use any of our components, or even build your own.
+take control with our api and sync your audio and video programmatically. the api empowers you to automate your syncs and integrate seamlessly with your own systems. follow these steps to create your first lip-sync job using the api.
 
-<CardGroup>
+### get your api key
 
-<Card title="Style Your Docs" icon="paintbrush" href="/settings/global">
-  Add flair to your docs with personalized branding.
-</Card>
+before you start integrating our api into your workflow, you'll need an api key. this key is the passcode that authenticates your requests and links them to your account. after signing up a new api key is automatically generated for you and can be accessed from the [keys page of the web app](https://app.synclabs.so/keys).
 
-<Card
-  title="Add API Endpoints"
-  icon="square-code"
-  href="/api-playground/configuration"
->
-  Implement your OpenAPI spec and enable API user interaction.
-</Card>
+you can also create new api keys and manage existing ones at any time from the same [page](https://app.synclabs.so/keys).
 
-<Card
-  title="Integrate Analytics"
-  icon="chart-mixed"
-  href="/analytics/supported-integrations"
->
-  Draw insights from user interactions with your documentation.
-</Card>
+<AccordionGroup>
+  <Accordion icon="page" title="access the keys page in the web app">
+    from the [web app](https://app.synclabs.so), you can view, create, and manage your api keys by navigating to the keys page. [here](https://app.synclabs.so/keys)
+    <Steps>
+      <Step title="open the profile drop down menu">
+        <Frame>
+          <img src="/images/get-your-api-key/open-profile-drop-down.png" alt="open profile drop down" />
+        </Frame>
+      </Step>
+      <Step title="click on api keys">
+        <Frame>
+          <img src="/images/get-your-api-key/open-api-keys.png" alt="open api keys page" />
+        </Frame>
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion icon="key" title="create a new key">
+    you can create a new API key at any time by clicking the `Create Key +` button.
+    <Frame>
+      <img src="/images/get-your-api-key/create-api-key.png" alt="create api key" />
+    </Frame>
+  </Accordion>
+  <Accordion icon="key" title="revoke an existing key">
+    you can revoke an API key at any time by clicking on the `Revoke` button next to the API Key you want to revoke.
+    <Warning>this will immediately revoke the API key and any requests using that API key will fail.</Warning>
+    <Steps>
+      <Step title="step 1">
+        <Frame>
+          <img src="/images/get-your-api-key/revoke-api-key-step1.png" alt="revoke api key step 1" />
+        </Frame>
+      </Step>
+      <Step title="step 2">
+        <Frame>
+          <img src="/images/get-your-api-key/revoke-api-key-step2.png" alt="revoke api key step 2" />
+        </Frame>
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>
 
-<Card
-  title="Host on a Custom Domain"
-  icon="browser"
-  href="/settings/custom-domain/subdomain"
->
-  Keep your docs on your own website's subdomain.
-</Card>
+ now that you have your api key, you're ready to start syncing your audio and video programmatically. follow the steps below to create your first lip-sync job using the api.
 
-</CardGroup>
+ ### create your first job with the api
+
+ the easiest way to start testing out the api is with the [API reference](/api-reference).
+
+ watch the video and follow the steps below to get started with the api.
+
+<Frame caption="how to sync a video using the api via the api reference">
+  <iframe 
+    width="100%" 
+    height="400" 
+    src="https://www.youtube.com/embed/link-to-api-demo-video?si=api-demo-video" 
+    title="API demo video player" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    allowfullscreen
+  />
+</Frame>
+
+<AccordionGroup>
+  <Accordion icon="code" title="sync a video using the api via the api reference">
+    <Steps>
+      <Step title="navigate to the api reference">
+        visit the [API reference](/api-reference) to get started with the lip-sync api. the api reference provides a comprehensive guide to the endpoints and parameters available for syncing your audio and video.
+
+        we'll be playing around with the `POST /video` lip-sync endpoint which you can find [here](/api-reference/endpoint/video/post-lip-sync).
+      </Step>
+      <Step title="setup authorization">
+        provide your `x-api-key` for authentication to access the api. you'll need this for all requests to create and manage your lip-sync jobs. to manage your api keys, visit the [keys page](https://app.synclabs.so/keys) in the web app or checkout the instructions in the [get your api key](/quickstart#get-your-api-key) section above
+
+        <Frame>
+          <img src="/images/use-api-reference/enter-api-key.png" alt="enter api key" />
+        </Frame>
+      </Step>
+      <Step title="enter body parameters">
+        fill out the body parameters with the details of your lip-sync job. you'll provide URLs to the audio and video you want to sync, and set a few options to tailor the job to your needs.
+        
+        <Frame>
+          <img src="/images/use-api-reference/enter-body-params.png" alt="enter api key" />
+        </Frame>
+
+        <Expandable title="body params" defaultOpen>
+          <ResponseField name="audioUrl" type="string">
+            The URL for the audio file to sync. Ensure it is either a YouTube URL or publicly accessible and in `mp3` or `wav` format.
+          </ResponseField>
+          <ResponseField name="videoUrl" type="string">
+            The URL for the video file to be lip-synced. It should be a YouTube URL or publicly accessible `mp4` file.
+          </ResponseField>
+          <ResponseField name="synergize" type="boolean">
+            A flag to enable / disable post-processing
+          </ResponseField>
+          <ResponseField name="maxCredits" type="number">
+            Maximum number of credits to use for video generation. If the job exceeds this value, the job will be aborted
+          </ResponseField>
+          <ResponseField name="webhookUrl" type="string">
+            A URL to send a notification to upon completion of video generation
+          </ResponseField>
+          <ResponseField name="model" type="string">
+            The model to use for video generation
+          </ResponseField>
+        </Expandable>
+
+        ensure all the required fields are filled out correctly to avoid any errors with your request. with everything set, you're ready to submit your job and let our synchronizer work its magic.
+      </Step>
+      <Step title="check job status">
+        after submitting your `POST` request, you'll receive a job `id`. use this `id` to make a `GET` request to `/video/{id}` and check the status of your lip-sync job.
+
+        keep polling until the status is `completed` and you receive a URL to download your synced video.
+      </Step>
+      <Step title="download your video">
+        once the job status is `completed`, use the provided download URL to retrieve your synced video.
+
+        now, your content is ready to amaze with perfect lip-sync, all powered by the sync api.
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>
+with the api, you have the power to automate and streamline your video production workflow, integrating cutting-edge lip-sync technology directly into your services. get started now and bring your content to life.
