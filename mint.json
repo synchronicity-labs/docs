@@ -98,5 +98,5 @@
       "mode": "show"
     }
   },
-  "openapi": ["https://staging-api.synclabs.org/playground-json"]
+  "openapi": ["https://api.synclabs.so/playground-json"]
 }
