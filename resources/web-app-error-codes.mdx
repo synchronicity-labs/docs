@@ -1,0 +1,55 @@
+---
+title: 'Web App Error Codes'
+description: |
+  Below are potential error codes that can be returned by the Sync Labs web app.
+  If you encounter an error that is not listed below, please [report it to us](/resources/web-app-error-codes#reporting-errors) and
+  we'll be happy to help.
+---
+
+## reporting errors
+
+if you run into any problems with the sync. web app, don't worry, we've got you covered. here's how you can let us know about any errors you come across:
+
+1. **send us a message:**
+    - inside the [web app](https://app.synclabs.so/), tap on the `send us a message` feature at the bottom right.
+    - let us know your name, email, and what went wrong. if there's an error code or message, include that too, along with what you were doing when things didn't go right.
+    
+2. **join our slack channel:**
+    - head over to our [slack channel](https://syncbetatesters.slack.com/join/shared_invite/zt-23592cxxg-sTjaMTkk2DO5yUcixzRWZg#/shared-invite/email) for quick support.
+    - in the #bugs channel, detail your issue.
+    - our team keeps an eye on this channel and will get back to you as quick as they can.
+
+## Web App Errors 
+### Upload Error - RequestTimeTooSkewed
+<Frame>
+  <img src="/images/aws-errors/AWS-RequestTimeTooSkewed-Error.png" alt="AWS RequestTimeTooSkewed Error" />
+</Frame>
+
+this bug has occured for some users running Windows 10 and is typically caused by a mismatch in your computers system time and the time on the AWS server.
+
+one way you can check is by running the below in the terminal:
+
+```bash
+$ curl http://s3.amazonaws.com -v 
+$ date -u 
+```
+
+the first command will return the time on the AWS server, and the second command will return the time on your computer. if the times are off by more than **15 minutes**, you'll need to resynchronize your system's clock to resolve the problem.
+
+### Upload Error - NetworkingError
+<Frame>
+  <img src="/images/aws-errors/AWS-NetworkingError-Error.png" alt="AWS Networking Error" />
+</Frame>
+
+this error is typically caused by a network connectivity issue. please check your internet connection and try again.
+
+if your connection is stable and this error persists, please [report it to us](/resources/web-app-error-codes#reporting-errors) and we'll be happy to help.
+
+### Upload Error - TimeoutError
+<Frame>
+  <img src="/images/aws-errors/AWS-TimeoutError-Error.png" alt="AWS Timeout Error" />
+</Frame>
+
+This error is caused by a timeout in the connection between your computer and the AWS server. Please try your request again.
+
+If this error persists, please [report it to us](/resources/web-app-error-codes#reporting-errors) and we'll be happy to help.

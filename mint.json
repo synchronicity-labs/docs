@@ -60,10 +60,23 @@
       ]
     },
     {
+      "group": "Resources",
+      "pages": [
+        "resources/example-projects",
+        "resources/web-app-error-codes"
+      ]
+    },
+    {
       "group": "Video",
       "pages": [
         "video/lip-sync",
         "video/translate"
+      ]
+    },
+    {
+      "group": "More",
+      "pages": [
+        "more/billing"
       ]
     },
     {
