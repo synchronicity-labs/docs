@@ -1,72 +1,34 @@
 ---
 title: 'Webhooks'
-description: 'learn how to use our apis to modify + synthesize humans in video'
+description: 'webhooks provide immediate notifications upon the completion of video generation.'
 ---
 
 <Note>
   [in beta] our parameters / spec will change over time.
-  we'll warn you as we make breaking changes – but these docs will 
+  we'll warn you as we make breaking changes - but these docs will 
   always reflect the latest build.
 </Note>
 
-## welcome
-we're building sota models + hosting them w/ simple apis.
+## Using Webhooks
 
-<Card
-  title="sync. openapi spec"
-  icon="leaf"
-  href="https://api.synclabs.so/playground-json"
->
-  View the OpenAPI specification file
-</Card>
+to use a webhook, specify the `webhookUrl` parameter when using any of our API endpoints that allow it.
 
-## Base URL
-
-our apis are built on REST principles. we enforce HTTPS in every request to improve data security, integrity, and privacy.
-
-all requests start w/ the following base URL:
-
-```
-https://api.synclabs.so
-```
-
-all video API endpoints are authenticated using Bearer tokens and picked up from the specification file.
-
-## data request
-
-
-## Security and Authentication
-
-To secure our video API endpoints, we employ X-API-Key authentication. 
-This method is chosen to facilitate a seamless and secure integration process for all client-server communications.
-
-all our api endpoints expect an X-API-Key header in every request. 
-it's a simple + secure way to authenticate your requests / generate accurate usage metrics across your api keys.
-
-
-
-here’s how you include it:
+once your job completes or fails, a `POST` request will be sent to the `webhookUrl` with the details of the completed job:
 
 ```json
 {
-  "method": "POST",
-  "url": "https://api.synclabs.so/video",
-  "headers": {
-    "accept": "application/json",
-    "x-api-key": "your_api_key_here",
-    "Content-Type": "application/json"
-  },
-  "body": {
-    "audioUrl": "https://example.com/path-to-audio.mp3",
-    "videoUrl": "https://example.com/path-to-video.mp4",
-    "synergize": true,
-    "maxCredits": 10,
-    "webhookUrl": "https://example.com/webhook",
-    "model": "sync-1"
-  }
+  "result": data,
+  "error": "Error message",
 }
-
 ```
+
+<Note>Ensure your webhook URL is open to `POST` requests and properly handles them.</Note>
+
+data will be returned regardless of the status of the job. the `error` field will return null if the job completed successfully.
+
+webhooks simplify your workflow by eliminating the need for frequent status inquiries. you can continue other tasks while waiting for a webhook notification.
+
+
 
 
 

@@ -5,7 +5,7 @@ description: 'learn how to use our apis to modify + synthesize humans in video'
 
 <Note>
   [in beta] our parameters / spec will change over time.
-  we'll warn you as we make breaking changes – but these docs will 
+  we'll warn you as we make breaking changes - but these docs will 
   always reflect the latest build.
 </Note>
 
@@ -20,7 +20,7 @@ we're building sota models + hosting them w/ simple apis.
   View the OpenAPI specification file
 </Card>
 
-## Base URL
+## base url
 
 our apis are built on REST principles. we enforce HTTPS in every request to improve data security, integrity, and privacy.
 
@@ -32,16 +32,13 @@ https://api.synclabs.so
 
 all video API endpoints are authenticated using Bearer tokens and picked up from the specification file.
 
-## data request
 
+## security and authentication
 
-## Security and Authentication
-
-all our api endpoints expect an X-API-Key header in every request.
+all our api endpoints expect an `x-api-key` header in every request. 
 it's a simple + secure way to authenticate your requests / generate accurate usage metrics across your api keys.
 
-
-here’s how you include it:
+here's how you can include it in your requests:
 
 ```json
 {
@@ -58,7 +55,7 @@ here’s how you include it:
     "synergize": true,
     "maxCredits": 10,
     "webhookUrl": "https://example.com/webhook",
-    "model": "sync-1"
+    "model": "sync-1.5.0"
   }
 }
 

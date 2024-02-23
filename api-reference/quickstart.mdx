@@ -5,60 +5,132 @@ description: 'make your first request w/ our lipsync api'
 
 <Note>
   [in beta] our parameters / spec will change over time.
-  we'll warn you as we make breaking changes – but these docs will 
+  we'll warn you as we make breaking changes - but these docs will 
   always reflect the latest build.
 </Note>
 
 ## generate an api-key
-all our api endpoints expect an X-API-Key header in every request. 
-it's a simple + secure way to authenticate your requests / generate accurate usage metrics across your api keys.
 
-TODO:
-show where to find a key
-show how to make / destroy a key
-FUTURE -> see usage metrics across keys // eg. # of calls, # of mins generated, etc.
+after signing up a new api key is automatically generated for you and can be accessed from the [keys page of the web app](https://app.synclabs.so/keys).
 
-## [POST] make your first request
+you can also create new api keys and manage existing ones at any time from the same [page](https://app.synclabs.so/keys).
 
-TODO:
-show how the request is structured
-show
+<AccordionGroup>
+  <Accordion icon="page" title="access the keys page in the web app">
+    from the [web app](https://app.synclabs.so), you can view, create, and manage your api keys by navigating to the keys page. [here](https://app.synclabs.so/keys)
+    <Steps>
+      <Step title="open the profile drop down menu">
+        <Frame>
+          <img src="/images/get-your-api-key/open-profile-drop-down.png" alt="open profile drop down" />
+        </Frame>
+      </Step>
+      <Step title="click on api keys">
+        <Frame>
+          <img src="/images/get-your-api-key/open-api-keys.png" alt="open api keys page" />
+        </Frame>
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion icon="key" title="create a new key">
+    you can create a new API key at any time by clicking the `Create Key +` button.
+    <Frame>
+      <img src="/images/get-your-api-key/create-api-key.png" alt="create api key" />
+    </Frame>
+  </Accordion>
+  <Accordion icon="key" title="revoke an existing key">
+    you can revoke an API key at any time by clicking on the `Revoke` button next to the API Key you want to revoke.
+    <Warning>this will immediately revoke the API key and any requests using that API key will fail.</Warning>
+    <Steps>
+      <Step title="step 1">
+        <Frame>
+          <img src="/images/get-your-api-key/revoke-api-key-step1.png" alt="revoke api key step 1" />
+        </Frame>
+      </Step>
+      <Step title="step 2">
+        <Frame>
+          <img src="/images/get-your-api-key/revoke-api-key-step2.png" alt="revoke api key step 2" />
+        </Frame>
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>
 
-## [GET] poll for a response
+## create your first job with the api
 
+the easiest way to start testing out the api is with the [API reference](/api-reference).
 
-## Security and Authentication
+ watch the video and follow the steps below to get started with the api.
 
-To secure our video API endpoints, we employ X-API-Key authentication. 
-This method is chosen to facilitate a seamless and secure integration process for all client-server communications.
+<Frame caption="how to sync a video using the api via the api reference">
+  <iframe 
+    width="100%" 
+    height="400" 
+    src="https://www.youtube.com/embed/link-to-api-demo-video?si=api-demo-video" 
+    title="API demo video player" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    allowfullscreen
+  />
+</Frame>
 
-all our api endpoints expect an X-API-Key header in every request. 
-it's a simple + secure way to authenticate your requests / generate accurate usage metrics across your api keys.
+<AccordionGroup>
+  <Accordion icon="code" title="sync a video using the api via the api reference">
+    <Steps>
+      <Step title="navigate to the api reference">
+        visit the [API reference](/api-reference) to get started with the lip-sync api. the api reference provides a comprehensive guide to the endpoints and parameters available for syncing your audio and video.
 
+        we'll be playing around with the `POST /video` lip-sync endpoint which you can find [here](/api-reference/endpoint/video/post-lip-sync).
+      </Step>
+      <Step title="setup authorization">
+        provide your `x-api-key` for authentication to access the api. you'll need this for all requests to create and manage your lip-sync jobs. to manage your api keys, visit the [keys page](https://app.synclabs.so/keys) in the web app or checkout the instructions in the [get your api key](/quickstart#get-your-api-key) section above
 
+        <Frame>
+          <img src="/images/use-api-reference/enter-api-key.png" alt="enter api key" />
+        </Frame>
+      </Step>
+      <Step title="enter body parameters">
+        fill out the body parameters with the details of your lip-sync job. you'll provide URLs to the audio and video you want to sync, and set a few options to tailor the job to your needs.
+        
+        <Frame>
+          <img src="/images/use-api-reference/enter-body-params.png" alt="enter api key" />
+        </Frame>
 
-here’s how you include it:
+        <Expandable title="body params" defaultOpen>
+          <ResponseField name="audioUrl" type="string">
+            The URL for the audio file to sync. Ensure it is either a YouTube URL or publicly accessible and in `mp3` or `wav` format.
+          </ResponseField>
+          <ResponseField name="videoUrl" type="string">
+            The URL for the video file to be lip-synced. It should be a YouTube URL or publicly accessible `mp4` file.
+          </ResponseField>
+          <ResponseField name="synergize" type="boolean">
+            A flag to enable / disable post-processing
+          </ResponseField>
+          <ResponseField name="maxCredits" type="number">
+            Maximum number of credits to use for video generation. If the job exceeds this value, the job will be aborted
+          </ResponseField>
+          <ResponseField name="webhookUrl" type="string">
+            A URL to send a notification to upon completion of video generation
+          </ResponseField>
+          <ResponseField name="model" type="string">
+            The model to use for video generation
+          </ResponseField>
+        </Expandable>
 
-```json
-{
-  "method": "POST",
-  "url": "https://api.synclabs.so/video",
-  "headers": {
-    "accept": "application/json",
-    "x-api-key": "your_api_key_here",
-    "Content-Type": "application/json"
-  },
-  "body": {
-    "audioUrl": "https://example.com/path-to-audio.mp3",
-    "videoUrl": "https://example.com/path-to-video.mp4",
-    "synergize": true,
-    "maxCredits": 10,
-    "webhookUrl": "https://example.com/webhook",
-    "model": "sync-1"
-  }
-}
+        ensure all the required fields are filled out correctly to avoid any errors with your request. with everything set, you're ready to submit your job and let our synchronizer work its magic.
+      </Step>
+      <Step title="check job status">
+        after submitting your `POST` request, you'll receive a job `id`. use this `id` to make a `GET` request to `/video/{id}` and check the status of your lip-sync job.
 
-```
+        keep polling until the status is `completed` and you receive a URL to download your synced video.
+      </Step>
+      <Step title="download your video">
+        once the job status is `completed`, use the provided download URL to retrieve your synced video.
+
+        now, your content is ready to amaze with perfect lip-sync, all powered by the sync api.
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>
 
 
 
