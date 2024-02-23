@@ -21,7 +21,7 @@
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "https://mintlify.com/community"
+      "url": "https://syncbetatesters.slack.com/ssb/redirect#/shared-invite/email"
     },
     {
       "name": "API Status",
@@ -47,7 +47,7 @@
     {
       "name": "Changelog",
       "icon": "newspaper",
-      "url": "https://synclabs.so/blog"
+      "url": "https://www.youtube.com/playlist?list=PLX8i0P_zBTmdSCgh6Tk1Ahs5nuK6iXFzw"
     }
   ],
   "navigation": [
@@ -55,7 +55,8 @@
       "group": "Get Started",
       "pages": [
         "introduction",
-        "quickstart"
+        "quickstart",
+        "models"
       ]
     },
     {
