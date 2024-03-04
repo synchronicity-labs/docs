@@ -92,10 +92,15 @@
       "pages": [
         "api-reference/endpoint/video/get-lip-sync",
         "api-reference/endpoint/video/get-lip-sync-cost",
-        "api-reference/endpoint/video/post-lip-sync",
-        "api-reference/endpoint/video/get-translate",
-        "api-reference/endpoint/video/get-translate-cost",
-        "api-reference/endpoint/video/post-translate"
+        "api-reference/endpoint/video/post-lip-sync"
+      ]
+    },
+    {
+      "group": "Lip Sync",
+      "pages": [
+        "api-reference/endpoint/lipsync/get-lip-sync",
+        "api-reference/endpoint/lipsync/get-lip-sync-cost",
+        "api-reference/endpoint/lipsync/post-lip-sync"
       ]
     }
   ],
@@ -105,11 +110,11 @@
     "linkedin": "https://www.linkedin.com/company/synclabs-ai",
     "slack": "https://syncbetatesters.slack.com/ssb/redirect#/shared-invite/email"
   },
-   "api": {
+  "api": {
     "baseUrl": "https://api.synclabs.so",
     "playground": {
       "mode": "show"
     }
   },
-  "openapi": ["https://api.synclabs.so/playground-json"]
+  "openapi": ["https://staging-api.synclabs.org/playground-json"]
 }
