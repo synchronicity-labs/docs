@@ -1,18 +1,18 @@
 ---
 title: 'Introduction'
-description: 'learn how to use our apis to modify + synthesize humans in video'
+description: 'learn how to use the sync. apis to modify + synthesize humans in video'
 ---
 
 <Note>
-  our parameters / spec will change over time.
+  [in beta] our parameters / spec will change over time.
   we'll warn you as we make breaking changes - but these docs will 
   always reflect the latest build.
 </Note>
 
 ## welcome
-welcome to our api documentation. we provide a suite of apis that allow you to manipulate and synthesize video and audio content with state-of-the-art (sota) models. whether you're looking to lipsync videos, animate static images, translate content across languages, or generate natural-sounding speech, our apis are designed to make these tasks simple and efficient.
+welcome to the sync. api documentation. we provide a suite of apis that allow you to manipulate and synthesize video and audio content with state-of-the-art (sota) models. whether you're looking to lipsync videos, animate static images, translate content across languages, or generate natural-sounding speech, our apis are designed to make these tasks simple and efficient.
 
-our apis are perfect for developers working on projects in content creation, localization, accessibility, and more. with just a few requests, you can enhance your video content, making it more engaging and accessible to a global audience.
+the sync. apis are perfect for developers working on projects in content creation, localization, accessibility, and more. with just a few requests, you can enhance your video content, making it more engaging and accessible to a global audience.
 
 getting started is easy. all you need is an `x-api-key` to authenticate your requests. from there, you can explore our various api endpoints, each tailored to specific video and audio processing needs. check out the openapi spec for a detailed description of available operations.
 
@@ -37,7 +37,7 @@ https://api.synclabs.so
 
 ## security and authentication
 
-all our api endpoints expect an `x-api-key` header in every request. 
+all sync. api endpoints expect an `x-api-key` header in every request. 
 it's a simple + secure way to authenticate your requests / generate accurate usage metrics across your api keys.
 
 here's how you can include it in your requests:
@@ -62,11 +62,11 @@ here's how you can include it in your requests:
 }
 ```
 
-checkout the [quickstart quide](https://docs.synclabs.so//api-reference/quickstart) to learn how to get your api key and start making requests.
+checkout the [quickstart quide](https://docs.synclabs.so//api-reference/quickstart) to learn how to get your api key and start making requests today.
 
 ## checkout out our api endpoints
 
-dive into our comprehensive API offerings across various endpoint families designed to enhance your video and audio projects. each family serves a unique purpose, empowering your applications with advanced synchronization, translation, voice generation, and animation capabilities.
+dive into our comprehensive api offerings across various endpoint families designed to enhance your video and audio projects. each family serves a unique purpose, empowering your applications with advanced synchronization, voice generation, and animation capabilities.
 
 <CardGroup cols={2}>
   <Card title="lipsync" icon="rotate" href="/api-reference/endpoint/lipsync/post-lipsync">
@@ -75,11 +75,11 @@ dive into our comprehensive API offerings across various endpoint families desig
   <Card title="animate" icon="film" href="/api-reference/endpoint/animate/post-animate">
     bring your videos to life by generating synchronized audio from text and animating videos accordingly. ideal for creating dynamic content from static assets.
   </Card>
-  <Card title="translate" icon="language" href="/api-reference/endpoint/translate/post-translate">
+  {/* <Card title="translate" icon="language" href="/api-reference/endpoint/translate/post-translate">
     expand your reach by translating and synchronizing videos into various languages. a must-have for content localization and reaching a global audience.
-  </Card>
+  </Card> */}
   <Card title="speak" icon="volume-high" href="/api-reference/endpoint/speak/post-speak">
-    convert text to natural-sounding speech with our Speak API. utilize a wide range of voices to add narration or dialogue to your projects.
+    convert text to natural-sounding speech. utilize a wide range of voices to add narration or dialogue to your projects.
   </Card>
   <Card title="voices" icon="users" href="/api-reference/endpoint/voices/post-voice">
     explore a diverse selection of voices to find the perfect match for your audio projects. each voice brings a unique character and emotion to your content.
