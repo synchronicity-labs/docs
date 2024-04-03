@@ -1,3 +1,42 @@
 ---
 openapi: get /translate/cost
+description: "get an estimate for translating and synchronizing your video into a target language before beginning the process. this endpoint quickly assesses the potential credits needed for translation, aiding in project planning and budgeting."
 ---
+
+# introduction
+
+before submitting a translation job, you can use the `/translate/cost` endpoint to get an estimate of the cost. this preliminary check is designed to set clear expectations and assist in efficient project management.
+
+# quick start
+
+## authentication
+before you can start using our api, you need to authenticate your requests. this is done using an `x-api-key` that links your requests to your account. if you don't have an api key yet, check out the instructions [here](https://docs.synclabs.so//api-reference/quickstart#generate-an-api-key) to obtain one.
+
+## estimate your translation cost
+
+with your `x-api-key` ready, you can estimate the cost for your translation job. to estimate the cost via the playground [above](/api-reference/endpoint/translate/get-translate-cost) follow the instructions below:
+
+<AccordionGroup>
+  <Accordion icon="book" title="via the api playground">
+    <Steps>
+      <Step title="prepare your video URL">
+        ensure you have the URL for your publicly accessible video file ready. this URL is essential for calculating the translation and synchronization cost.
+
+        enter the video URL as a query parameter when submitting your request to the `/translate/cost` endpoint.
+
+        <Frame caption={`prepare your publicly accessible video URL`}>
+          <img src="/images/translate/get-translate-cost-query.png" alt="preparing video URL" />
+        </Frame>
+      </Step>
+      <Step title="review your estimate">
+        after submission, you'll receive an estimated cost for the translation and synchronization of your video. this crucial insight helps you gauge whether to proceed based on your credit balance and project budget.
+
+        <Frame caption={`the response will detail the estimated credit cost for the translation job.`}>
+          <img src="/images/translate/get-translate-cost-response.png" alt="reviewing the estimated cost" />
+        </Frame>
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>
+
+the `/translate/cost` endpoint is a valuable tool for planning your translation projects. an upfront understanding of potential costs enables better credit management and project planning, ensuring your translation efforts proceed without a hitch.

@@ -1,3 +1,42 @@
 ---
 openapi: get /speak/cost
+description: "estimate the cost of generating speech from text before initiating the synthesis process. this endpoint offers a preliminary assessment of the potential credits needed for transforming your text into spoken audio."
 ---
+
+# introduction
+
+before launching into speech synthesis, the `/speak/cost` endpoint can be used to estimate the cost. this helps with project planning, and to align expectations and budget allocations effectively.
+
+# quick start
+
+## authentication
+before you can start using our api, you need to authenticate your requests. this is done using an `x-api-key` that links your requests to your account. if you don't have an api key yet, check out the instructions [here](https://docs.synclabs.so//api-reference/quickstart#generate-an-api-key) to obtain one.
+
+## estimate your speech synthesis cost
+
+equipped with your `x-api-key`, navigating the cost estimation for speech synthesis is effortless. to estimate the cost via the playground [above](/api-reference/endpoint/speak/get-speak-cost) follow the instructions below:
+
+<AccordionGroup>
+  <Accordion icon="book" title="via the api playground">
+    <Steps>
+      <Step title="prepare your text or text file URL">
+        ready either your text or the URL to a text file intended for speech generation. these details are essential for calculating the synthesis cost.
+
+        enter the text or text file URL as a query parameter when submitting your request to the `/speak/cost` endpoint.
+
+        <Frame caption={`gather your text or text file URL`}>
+          <img src="/images/speak/get-speak-cost-query.png" alt="preparing text or text file URL" />
+        </Frame>
+      </Step>
+      <Step title="review your estimate">
+        upon submission, an estimate is provided, detailing the credits required to generate audio from your text. this assists in making informed decisions regarding the feasibility of your speech synthesis projects within available budgets.
+
+        <Frame caption={`expect an estimated cost in the response`}>
+          <img src="/images/speak/get-speak-cost-response.png" alt="reviewing the estimated cost" />
+        </Frame>
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>
+
+leveraging the `/speak/cost` endpoint enables effective planning for your text-to-speech projects. by understanding the potential costs upfront, you're better positioned to manage your credits and ensure a seamless project execution.

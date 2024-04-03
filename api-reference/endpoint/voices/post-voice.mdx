@@ -1,0 +1,93 @@
+---
+openapi: post /voices/create
+description: "create custom voice clones that can be seamlessly integrated with our animate and speak endpoints. perfect for giving your projects a unique voice or matching the audio style to your brand."
+---
+
+# introduction
+
+unlock the power of personalized audio with sync.'s `/voices` endpoint. this tool enables you to create custom voice clones, allowing for the ultimate customization of your projects. whether you're aiming to match a specific vocal style or infuse your brand's unique character into your content, our technology ensures your videos stand out.
+
+craft voice clones with ease and integrate them with our animate and speak endpoints for a cohesive and engaging audio experience. ideal for content creators, marketers, and educators looking to elevate their audiovisual projects.
+
+## api features
+
+<Card title="custom voice creation" icon="user-plus" icontype="duotone">
+  easily create custom voice clones tailored to your project's needs.
+</Card>
+<Card title="seamless integration" icon="link" icontype="duotone">
+  integrate your custom voices with our animate and speak endpoints for a unified project workflow.
+</Card>
+<Card title="enhanced engagement" icon="heart" icontype="duotone">
+  engage your audience with unique voiceovers that elevate your content.
+</Card>
+
+# quick start
+
+## authentication
+before you can start using our api, you need to authenticate your requests. this is done using an `x-api-key` that links your requests to your account. if you don't have an api key yet, check out the instructions [here](https://docs.synclabs.so//api-reference/quickstart#generate-an-api-key) to obtain one.
+
+## create your custom voice
+
+with your `x-api-key` ready, you can begin creating custom voice clones. to use the `/voices` via the playground [above](/api-reference/endpoint/voices/post-voice) follow the instructions below:
+
+<AccordionGroup>
+  <Accordion icon="microphone" title="create a custom voice via the api">
+    <Steps>
+      <Step title="authorize">
+        enter your api key in the `x-api-key` field within the `Authorization` section.
+
+        <Frame caption={`enter your x-api-key in the authorization section`}>
+          <img src="/images/voices/post-voice-authorization.png" alt="authorize post voice api" />
+        </Frame>
+      </Step>
+      
+      <Step title="enter params">
+        enter the params in the body section:
+
+        <Frame caption={`
+          enter the urls for your publicly accessible audio and video files into the respective fields and set other required parameters.
+        `}>
+          <img src="/images/voices/post-voice-body.png" alt="body params for post voice api" />
+        </Frame>
+
+        <h3>example input</h3>
+        ```json
+        {
+          "name": "Example voice name",
+          "description": "This is a description for the example voice.",
+          "inputSample": ["https://example.com/sample1.mp3"],
+        }
+        ```
+
+        this example request outlines the basic structure for creating a voice clone.
+      </Step>
+      <Step title="submit">
+        click the `Send` button to submit your request. after submission, you will receive a response that includes the `id` of your voice, the current status, and the details of the submission.
+
+        <h3>understanding the response</h3>
+        the initial response provides you with essential details to track your job:
+
+        ```json
+        {
+          "id": "unique_job_id",
+          "status": "processing",
+          "name": "Example voice name",
+          "description": "This is a description for the example voice.",
+          "inputSample": ["https://example.com/sample1.mp3"],
+          "creditsDeducted": 123,
+          "webhookUrl": null,
+        }
+        ```
+
+        your job's `status` will start as `pending` and move to `processing`. use the returned `id` with the `GET /voices/{id}` endpoint to periodically poll for the status of your job. this polling is crucial for knowing when your video is ready.
+
+        <h3>polling for completion</h3>
+        periodically send requests to `GET /voices/{id}` with your job `id`. when the job status changes to `completed`, the response will include a URL to download your synced video.
+
+        Click [here](https://docs.synclabs.so//api-reference/endpoint/voices/get-voice#quick-start) to view instructions on polling for job completion with the [get voice api playground](https://docs.synclabs.so//api-reference/endpoint/voices/get-voice)
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>
+
+embrace the power of custom voices to bring a new level of personalization to your projects. with sync., your content can truly speak in your brand's voice.

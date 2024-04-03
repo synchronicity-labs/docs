@@ -1,3 +1,58 @@
 ---
 openapi: get /voices
+description: "retrieve a list of all available voices, including details such as id, name, and status. this endpoint is ideal for exploring the diverse voices you've created, or accessing our built-in voice selection."
 ---
+
+# introduction
+
+explore your created voice clones and all built-in voices using the `/voices` endpoint. this resource allows you to view details of each voice, aiding in the decision-making process for your voice synthesis or animation jobs.
+
+get acquainted with the voices available to you and make informed choices for your projects.
+
+# quick start
+
+## authentication
+before you can start using our api, you need to authenticate your requests. this is done using an `x-api-key` that links your requests to your account. if you don't have an api key yet, check out the instructions [here](https://docs.synclabs.so//api-reference/quickstart#generate-an-api-key) to obtain one.
+
+## explore available voices
+
+with your `x-api-key` ready, you have everything you need to discover and choose the right voice for your project. to sync your video via the playground [above](/api-reference/endpoint/voices/get-voices) follow the instructions below:
+
+<AccordionGroup>
+  <Accordion icon="users" title="via the api playground">
+    <Steps>
+      <Step title="authorize">
+        enter your api key in the `x-api-key` field within the `Authorization` section.
+
+        <Frame caption={`enter your x-api-key in the authorization section`}>
+          <img src="/images/voices/get-voices-authorization.png" alt="authorize get voices api" />
+        </Frame>
+      </Step>
+      <Step title="submit">
+        click the `Send` button to submit your synchronization request. after submission, you will receive a response that includes the `id` of your lip-sync job, the current status, and URLs to the original submissions.
+
+        <h3>understanding the response</h3>
+        the initial response provides you with essential details to track your job:
+
+        ```json
+        [
+          {
+            "id": "unique_job_id",
+            "status": "completed",
+            "name": "voice_name",
+            "description": "voice_description",
+            "inputSamples": ["https://example.com/sample1.mp3"],
+            "outputSamples": ["https://example.com/sample1.mp3"],
+          }
+          ...
+        ]
+        ```
+
+        examine the list to find a voice that suits your project's needs. look for the `id`, `name`, and `status`, and `outputSamples` of each voice to make your selection.
+
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>
+
+this guide ensures you can efficiently browse and select from the voices you've created, streamlining your workflow for voice synthesis and animation projects.

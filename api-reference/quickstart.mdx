@@ -4,10 +4,20 @@ description: 'make your first request w/ our lipsync api'
 ---
 
 <Note>
-  [in beta] our parameters / spec will change over time.
+  our parameters / spec will change over time.
   we'll warn you as we make breaking changes - but these docs will 
   always reflect the latest build.
 </Note>
+
+## getting started with sync.
+welcome to your quickstart guide! here, we'll guide you through creating an account in our web app, generating your first API key, and making your initial request using the `/lipsync` endpoint.
+
+the `/lipsync` endpoint allows you to synchronize your videos' lip movements with any audio track, enhancing accessibility, engagement, and overall video quality. follow the steps below to seamlessly integrate cutting-edge lip-sync technology into your projects.
+
+
+## create an account in the web app
+to kickstart your journey with our apis, the first step is to create an account on our [web app](https://app.synclabs.so). this simple process allows you to obtain an api key, manage your account, and access our apis.
+
 
 ## generate an api-key
 
@@ -55,82 +65,90 @@ you can also create new api keys and manage existing ones at any time from the s
   </Accordion>
 </AccordionGroup>
 
-## create your first job with the api
+## generate your first video using the api
 
-the easiest way to start testing out the api is with the [API reference](/api-reference).
+once you have your `x-api-key`, you're ready to synchronize your first video using the `/lipsync` endpoint. to sync your video via the [playground](https://docs.synclabs.so//api-reference/endpoint/lipsync/post-lipsync) follow the instructions below:
 
-follow the steps below to get started with the api.
-
-{/* <Frame caption="how to sync a video using the api via the api reference">
-  <iframe 
-    width="100%" 
-    height="400" 
-    src="https://www.youtube.com/embed/link-to-api-demo-video?si=api-demo-video" 
-    title="API demo video player" 
-    frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-    allowfullscreen
-  />
-</Frame> */}
 
 <AccordionGroup>
-  <Accordion icon="code" title="sync a video using the api via the api reference">
-    <Steps>
-      <Step title="navigate to the api reference">
-        visit the [API reference](/api-reference) to get started with the lip-sync api. the api reference provides a comprehensive guide to the endpoints and parameters available for syncing your audio and video.
+  <Accordion icon="book" title="lipsync your video via the api playground">
+  <Steps>
+    <Step title="authorize">
+      enter your api key in the `x-api-key` field within the `Authorization` section.
 
-        we'll be playing around with the `POST /video` lip-sync endpoint which you can find [here](/api-reference/endpoint/video/post-lip-sync).
-      </Step>
-      <Step title="setup authorization">
-        provide your `x-api-key` for authentication to access the api. you'll need this for all requests to create and manage your lip-sync jobs. to manage your api keys, visit the [keys page](https://app.synclabs.so/keys) in the web app or checkout the instructions in the [get your api key](/quickstart#get-your-api-key) section above
+      <Frame caption={`enter your x-api-key in the authorization section`}>
+        <img src="/images/lipsync/lipsync-authorize.png" alt="authorize lipsync api" />
+      </Frame>
+    </Step>
+    <Step title="enter params">
+      enter the params in the body section:
 
-        <Frame>
-          <img src="/images/use-api-reference/enter-api-key.png" alt="enter api key" />
-        </Frame>
-      </Step>
-      <Step title="enter body parameters">
-        fill out the body parameters with the details of your lip-sync job. you'll provide URLs to the audio and video you want to sync, and set a few options to tailor the job to your needs.
-        
-        <Frame>
-          <img src="/images/use-api-reference/enter-body-params.png" alt="enter api key" />
-        </Frame>
+      <Frame caption={`
+        enter the urls for your publicly accessible audio and video files into the respective fields and set other required parameters.
+      `}>
+        <img src="/images/lipsync/lipsync-body.png" alt="body params for lipsync api" />
+      </Frame>
+      <h3>example input</h3>
+      ```json
+      {
+        "audioUrl": "https://example.com/audio.mp3",
+        "videoUrl": "https://example.com/video.mp4",
+        "synergize": true,
+        "model": "sync-1.6.0"
+      }
+      ```
+      
+    </Step>
+      <Step title="submit">
+      click the `Send` button to submit your synchronization request. after submission, you will receive a response that includes the `id` of your lip-sync job, the current status, and URLs to the original submissions.
 
-        <Expandable title="body params" defaultOpen>
-          <ResponseField name="audioUrl" type="string">
-            The URL for the audio file to sync. Ensure it is either a YouTube URL or publicly accessible and in `mp3` or `wav` format.
-          </ResponseField>
-          <ResponseField name="videoUrl" type="string">
-            The URL for the video file to be lip-synced. It should be a YouTube URL or publicly accessible `mp4` file.
-          </ResponseField>
-          <ResponseField name="synergize" type="boolean">
-            A flag to enable / disable post-processing
-          </ResponseField>
-          <ResponseField name="maxCredits" type="number">
-            Maximum number of credits to use for video generation. If the job exceeds this value, the job will be aborted
-          </ResponseField>
-          <ResponseField name="webhookUrl" type="string">
-            A URL to send a notification to upon completion of video generation
-          </ResponseField>
-          <ResponseField name="model" type="string">
-            The model to use for video generation
-          </ResponseField>
-        </Expandable>
+      <h3>understanding the response</h3>
+      the initial response provides you with essential details to track your job:
 
-        ensure all the required fields are filled out correctly to avoid any errors with your request. with everything set, you're ready to submit your job and let our synchronizer work its magic.
-      </Step>
-      <Step title="check job status">
-        after submitting your `POST` request, you'll receive a job `id`. use this `id` to make a `GET` request to `/video/{id}` and check the status of your lip-sync job.
+      ```json
+      {
+        "id": "unique_job_id",
+        "status": "processing",
+        "videoUrl": "",
+        "originalVideoUrl": "https://example.com/video.mp4",
+        "originalAudioUrl": "https://example.com/audio.mp3",
+        "synergize": true,
+        "creditsDeducted": 123,
+        "webhookUrl": null,
+      }
+      ```
 
-        keep polling until the status is `completed` and you receive a URL to download your synced video.
-      </Step>
-      <Step title="download your video">
-        once the job status is `completed`, use the provided download URL to retrieve your synced video.
+      your job's `status` will start as `pending` and move to `processing`. use the returned `id` with the `GET /lipsync/{id}` endpoint to periodically poll for the status of your job. this polling is crucial for knowing when your video is ready.
 
-        now, your content is ready to amaze with perfect lip-sync, all powered by the sync api.
-      </Step>
-    </Steps>
+      <h3>polling for completion</h3>
+      periodically send requests to `GET /lipsync/{id}` with your job `id`. when the job status changes to `completed`, the response will include a URL to download your synced video.
+
+      Click [here](https://docs.synclabs.so//api-reference/endpoint/lipsync/get-lipsync#quick-start) to view instructions on polling for job completion with the [get lipsync api playground](https://docs.synclabs.so//api-reference/endpoint/lipsync/get-lipsync)
+    </Step>
+  </Steps>
+
   </Accordion>
 </AccordionGroup>
 
 
+## checkout one of our other apis
 
+dive into our comprehensive API offerings across various endpoint families designed to enhance your video and audio projects. each family serves a unique purpose, empowering your applications with advanced synchronization, translation, voice generation, and animation capabilities.
+
+<CardGroup cols={2}>
+  <Card title="Lipsync" icon="rotate" href="/api-reference/endpoint/lipsync/post-lipsync">
+    Synchronize video lip movements with any audio track using our advanced lipsync technology. Perfect for dubbing and enhancing video content accessibility.
+  </Card>
+  <Card title="Animate" icon="film" href="/api-reference/endpoint/animate/post-animate">
+    Bring your videos to life by generating synchronized audio from text and animating videos accordingly. Ideal for creating dynamic content from static assets.
+  </Card>
+  <Card title="Translate" icon="language" href="/api-reference/endpoint/translate/post-translate">
+    Expand your reach by translating and synchronizing videos into various languages. A must-have for content localization and reaching a global audience.
+  </Card>
+  <Card title="Speak" icon="volume-high" href="/api-reference/endpoint/speak/post-speak">
+    Convert text to natural-sounding speech with our Speak API. Utilize a wide range of voices to add narration or dialogue to your projects.
+  </Card>
+  <Card title="Voices" icon="users" href="/api-reference/endpoint/voices/post-voice">
+    Explore a diverse selection of voices to find the perfect match for your audio projects. Each voice brings a unique character and emotion to your content.
+  </Card>
+</CardGroup>

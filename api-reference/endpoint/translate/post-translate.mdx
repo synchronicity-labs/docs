@@ -1,3 +1,218 @@
 ---
 openapi: post /translate
+description: "transform your videos for a global audience with our translation and lip-sync technology. seamlessly integrate translated audio that matches the video's lip movements, making your content accessible and engaging for viewers worldwide."
 ---
+
+# introduction
+at sync., we make it easy to bring your video content to global audiences. our `/translate` endpoint doesn't just translate; it transforms your videos to match lip movements with the new audio. ideal for anyone looking to broaden their reach without losing the video's original charm.
+
+explore how our api can make your videos more accessible and engaging across different languages. get started with our straightforward integration process today.
+
+### api features
+
+<Card title="authentic synchronization" icon="language" iconType="duotone">
+  our advanced ai ensures translated audio matches your video's lip movements perfectly.
+</Card>
+<Card title="wide language support" icon="globe" iconType="duotone">
+  broaden your reach with support for multiple languages.
+</Card>
+<Card title="easy integration" icon="puzzle-piece" iconType="duotone">
+  integrate our technology seamlessly into your workflow with our developer-friendly tools.
+</Card>
+
+# available models
+
+explore our diverse range of models, each designed for specific syncing needs. selecting the appropriate model ensures optimal performance and results.
+
+<AccordionGroup>
+  <Accordion icon="star" title="sync-1.6.0 (top-tier sync)">
+    **model id:** 
+    ```bash 
+    sync-1.6.0
+    ```
+
+    **description:** our best mode, everything good about sync-1.5 but now with fluid, human-like mouth movements. When to switch to 1.5: (i) you want the mouth movements to be more visibly prominent, (ii) you observe visual artifacts at the scene boundaries.
+
+    **when to use:** opt for this model to address nuances in teeth visibility and mouth coloration for a flawless finish.
+  </Accordion>
+
+  <Accordion icon="circle-check" title="sync-1.5.0 (stable and tested)">
+    **model id:** 
+    ```bash 
+    sync-1.5.0
+    ```
+    **description:** accurate, high-resolution translate that has been proven to be reliable over a large variety of videos. Why choose this: if sync-1.6 model gives you feeble-looking lip movements, this version can perform better.
+
+    **why choose:** perfect when upgrading from earlier versions or seeking a stable, tested option when the latest beta model doesn't fit your project needs.
+  </Accordion>
+
+  <Accordion icon="bolt" title="wav2lip++ (fast and free to use)">
+    **model id:** 
+    ```bash
+    wav2lip++
+    ```
+
+    **description:** low-resolution, fast, translate that will be free forever. Not suitable for commercial use.
+
+    **why choose:** use this for fast processing of low-resolution videos or for testing purposes.
+  </Accordion>
+
+  <Accordion icon="box-archive" title="sync-1, sync-1.5.1-beta (legacy support)">
+    **model ids:** 
+    ```bash
+    sync-1
+    ```
+     ```bash
+    sync-1.5.1-beta
+    ```
+
+    **description:** offering compatibility for projects initiated on older standards, this model ensures continuity. automatically upgrades to sync-1.5.0 for enhanced outcomes.
+
+    **legacy advantage:** use this for ongoing projects needing legacy support with the benefit of automatic quality improvements.
+  </Accordion>
+</AccordionGroup>
+
+# supported languages
+
+explore the full array of languages our api supports, ensuring your content is globally understood. the list below presents all the language options available:
+
+<AccordionGroup>
+  <Accordion icon="globe" title="full list of supported languages">
+    find the perfect language for your audio synchronization project from our extensive selection. each language code is paired with its corresponding language for your convenience.
+
+    **language codes and names:**
+    ```plaintext
+    aa - Afar          ab - Abkhazian      ae - Avestan
+    af - Afrikaans     ak - Akan           am - Amharic
+    an - Aragonese     ar - Arabic         as - Assamese
+    av - Avaric        ay - Aymara         az - Azerbaijani
+    ba - Bashkir       be - Belarusian     bg - Bulgarian
+    bh - Bihari        bi - Bislama        bm - Bambara
+    bn - Bengali       bo - Tibetan        br - Breton
+    bs - Bosnian       ca - Catalan        ce - Chechen
+    ch - Chamorro      co - Corsican       cr - Cree
+    cs - Czech         cu - Church Slavic  cv - Chuvash
+    cy - Welsh         da - Danish         de - German
+    dv - Divehi        dz - Dzongkha       ee - Ewe
+    el - Greek         en - English        eo - Esperanto
+    es - Spanish       et - Estonian       eu - Basque
+    fa - Persian       ff - Fulah          fi - Finnish
+    fj - Fijian        fo - Faroese        fr - French
+    fy - Frisian       ga - Irish          gd - Gaelic
+    gl - Galician      gn - Guarani        gu - Gujarati
+    gv - Manx          ha - Hausa          he - Hebrew
+    hi - Hindi         ho - Hiri Motu      hr - Croatian
+    ht - Haitian       hu - Hungarian      hy - Armenian
+    hz - Herero        ia - Interlingua    id - Indonesian
+    ie - Interlingue   ig - Igbo           ii - Sichuan Yi
+    ik - Inupiaq       io - Ido            is - Icelandic
+    it - Italian       iu - Inuktitut      ja - Japanese
+    jv - Javanese      ka - Georgian       kg - Kongo
+    ki - Kikuyu        kj - Kuanyama       kk - Kazakh
+    kl - Kalaallisut   km - Khmer          kn - Kannada
+    ko - Korean        kr - Kanuri         ks - Kashmiri
+    ku - Kurdish       kv - Komi           kw - Cornish
+    ky - Kirghiz       la - Latin          lb - Luxembourgish
+    lg - Ganda         li - Limburgan      ln - Lingala
+    lo - Lao           lt - Lithuanian     lu - Luba-Katanga
+    lv - Latvian       mg - Malagasy       mh - Marshallese
+    mi - Maori         mk - Macedonian     ml - Malayalam
+    mn - Mongolian     mr - Marathi        ms - Malay
+    mt - Maltese       my - Burmese        na - Nauru
+    nb - Norwegian Bokmål nd - North Ndebele ne - Nepali
+    ng - Ndonga        nl - Dutch          nn - Nynorsk
+    no - Norwegian     nr - South Ndebele  nv - Navajo
+    ny - Chichewa      oc - Occitan        oj - Ojibwa
+    om - Oromo         or - Oriya          os - Ossetian
+    pa - Panjabi       pi - Pali           pl - Polish
+    ps - Pushto        pt - Portuguese     qu - Quechua
+    rm - Romansh       rn - Rundi          ro - Romanian
+    ru - Russian       rw - Kinyarwanda    sa - Sanskrit
+    sc - Sardinian     sd - Sindhi         se - Northern Sami
+    sg - Sango         si - Sinhala        sk - Slovak
+    sl - Slovenian     sm - Samoan         sn - Shona
+    so - Somali        sq - Albanian       sr - Serbian
+    ss - Swati         st - Southern Sotho su - Sundanese
+    sv - Swedish       sw - Swahili        ta - Tamil
+    te - Telugu        tg - Tajik          th - Thai
+    ti - Tigrinya      tk - Turkmen        tl - Tagalog
+    tn - Tswana        to - Tonga          tr - Turkish
+    ts - Tsonga        tt - Tatar          tw - Twi
+    ty - Tahitian      ug - Uighur         uk - Ukrainian
+    ur - Urdu          uz - Uzbek          ve - Venda
+    vi - Vietnamese    vo - Volapük        wa - Walloon
+    wo - Wolof         xh - Xhosa          yi - Yiddish
+    yo - Yoruba        za - Zhuang         zh - Chinese
+    zu - Zulu
+    ```
+  </Accordion>
+</AccordionGroup>
+
+# quick start
+
+## authentication
+before you can start using our api, you need to authenticate your requests. this is done using an `x-api-key` that links your requests to your account. if you don't have an api key yet, check out the instructions [here](https://docs.synclabs.so//api-reference/quickstart#generate-an-api-key) to obtain one.
+
+## translate your videos
+
+with your `x-api-key` ready to go, you can now start translating your videos. to translate video via the playground [above](/api-reference/endpoint/translate/post-translate) follow the instructions below:
+
+<AccordionGroup>
+  <Accordion icon="book" title="translate your video via the api playground">
+    <Steps>
+      <Step title="authorize">
+        enter your api key in the `x-api-key` field within the `Authorization` section.
+
+        <Frame caption={`enter your x-api-key in the authorization section`}>
+          <img src="/images/translate/post-translate-authorization.png" alt="authorize translate api" />
+        </Frame>
+      </Step>
+      <Step title="enter params">
+        enter the params in the body section:
+
+        <Frame caption={`
+          enter the video url, target language and any other optional parameters into the respective fields.
+        `}>
+          <img src="/images/translate/post-translate-body.png" alt="body params for translate api" />
+        </Frame>
+        <h3>example input</h3>
+        ```json
+        {
+          "videoUrl": "https://example.com/video.mp4",
+          "targetLanguage": "en",
+          "model": "sync-1.6.0"
+        }
+        ```
+      
+      </Step>
+        <Step title="submit">
+        click the `Send` button to submit your translation request. after submission, you will receive a response that includes the `id` of your translation job, the current status, and details of the original submission.
+
+        <h3>understanding the response</h3>
+        the initial response provides you with essential details to track your job:
+
+        ```json
+        {
+          "id": "unique_job_id",
+          "videoUrl": "",
+          "status": "processing",
+          "original_audio_url": "https://example.com/audio.mp3",
+          "original_video_url": "https://example.com/video.mp4",
+          "synergize": true,
+          "creditsDeducted": 123,
+          "webhookUrl": {}
+        }
+        ```
+
+        your job's `status` will start as `pending` and move to `processing`. use the returned `id` with the `GET /translate/{id}` endpoint to periodically poll for the status of your job. this polling is crucial for knowing when your video is ready.
+
+        <h3>polling for completion</h3>
+        periodically send requests to `GET /translate/{id}` with your job `id`. when the job status changes to `completed`, the response will include a URL to download your synced video.
+
+        Click [here](https://docs.synclabs.so//api-reference/endpoint/translate/get-translate#quick-start) to view instructions on polling for job completion with the [get translate api playground](https://docs.synclabs.so//api-reference/endpoint/translate/get-tran)
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>
+
+

@@ -1,3 +1,42 @@
 ---
 openapi: get /animate/cost
+description: "get an estimate for creating an animated video with custom audio before starting the process. this endpoint quickly calculates the potential credits needed for generating audio from text and synchronizing it with your video."
 ---
+
+# introduction
+
+before diving into animation, the `/animate/cost` endpoint offers a preliminary look at the cost involved. this step is crucial for planning and budgeting, ensuring you know how many credits the animation process will consume.
+
+# quick start
+
+## authentication
+before you can start using our api, you need to authenticate your requests. this is done using an `x-api-key` that links your requests to your account. if you don't have an api key yet, check out the instructions [here](https://docs.synclabs.so//api-reference/quickstart#generate-an-api-key) to obtain one.
+
+## estimate your animation cost
+
+with your `x-api-key` ready, you can easily navigate the cost estimation for your animation projects. to estimate the cost via the playground [above](/api-reference/endpoint/animate/get-animate-cost) follow the instructions below:
+
+<AccordionGroup>
+  <Accordion icon="book" title="via the api playground">
+    <Steps>
+      <Step title="prepare your text and video URL">
+        ready your text for voiceover and the URL for the video you wish to animate. these elements are essential for assessing the cost of adding custom audio to your video.
+
+        enter the text and video URL as query parameters when submitting your request to the `/animate/cost` endpoint.
+
+        <Frame caption={`gather your text and video URL`}>
+          <img src="/images/animate/get-animate-cost-query.png" alt="preparing text and video URL" />
+        </Frame>
+      </Step>
+      <Step title="review your estimate">
+        upon submission, you'll receive a detailed estimate, informing you of the credits required for generating audio from text and synchronizing it with your video.
+
+        <Frame caption={`expect an estimated cost in the response`}>
+          <img src="/images/animate/get-animate-cost-response.png" alt="reviewing the estimated cost" />
+        </Frame>
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>
+
+the `/animate/cost` endpoint empowers you to plan and execute your animation projects with confidence, ensuring you're well-informed about the credit costs upfront for optimal resource allocation.

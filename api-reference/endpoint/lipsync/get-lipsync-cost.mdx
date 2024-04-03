@@ -1,0 +1,43 @@
+---
+openapi: get /lipsync/cost
+description: "estimate the cost of your lip-sync job before submission. this endpoint provides a quick way to understand the potential credits required for synchronizing your video with the desired audio track."
+---
+
+# introduction
+
+before committing to a full synchronization process, use the `/lipsync/cost` endpoint to get an estimate of the cost involved. this preliminary step helps manage expectations and plan your projects more efficiently.
+
+# quick start
+
+## authentication
+before you can start using our api, you need to authenticate your requests. this is done using an `x-api-key` that links your requests to your account. if you don't have an api key yet, check out the instructions [here](https://docs.synclabs.so//api-reference/quickstart#generate-an-api-key) to obtain one.
+
+## estimate your lipsync cost
+
+armed with your `x-api-key`, estimating the cost for lip-syncing videos is straightforward. to estimate the cost via the playground [above](/api-reference/endpoint/lipsync/get-lipsync-cost) follow the instructions below:
+
+<AccordionGroup>
+  <Accordion icon="book" title="via the api playground">
+    <Steps>
+      <Step title="prepare and enter your URLs">
+        have the URLs for your publicly accessible audio and video files ready. these URLs are required to calculate the cost of the synchronization process.
+
+        enter the audio and video URLs as query parameters with the `/lipsync/cost` endpoint. this submission will return an estimate of the credits required for your job.
+
+        <Frame caption={`example audio and video URLs`}>
+          <img src="/images/lipsync/get-lipsync-cost-query.png" alt="preparing audio and video URLs" />
+        </Frame>
+      </Step>
+      <Step title="review the estimate">
+        the response will provide an estimated cost for synchronizing your specified audio and video. this information can help you decide on proceeding with the synchronization job based on your available credits.
+
+        <Frame caption={`the response includes the estimated cost and output video length for the job.`}>
+          <img src="/images/lipsync/get-lipsync-cost-response.png" alt="reviewing the estimated cost" />
+        </Frame>
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>
+
+
+utilize the `/lipsync/cost` endpoint to efficiently plan your lip-sync projects. knowing the potential cost upfront aids in better credit management and ensures a smoother project workflow.

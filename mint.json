@@ -88,49 +88,43 @@
       ]
     },
     {
-      "group": "Video (Deprecated)",
+      "group": "lipsync",
       "pages": [
-        "api-reference/endpoint/video/get-lip-sync",
-        "api-reference/endpoint/video/get-lip-sync-cost",
-        "api-reference/endpoint/video/post-lip-sync"
+        "api-reference/endpoint/lipsync/get-lipsync",
+        "api-reference/endpoint/lipsync/get-lipsync-cost",
+        "api-reference/endpoint/lipsync/post-lipsync"
       ]
     },
-    {
-      "group": "Lip Sync",
+        {
+      "group": "Animate",
       "pages": [
-        "api-reference/endpoint/lipsync/get-lip-sync",
-        "api-reference/endpoint/lipsync/get-lip-sync-cost",
-        "api-reference/endpoint/lipsync/post-lip-sync"
-      ]
-    },
-    {
-      "group": "Translate",
-      "pages": [
-        "api-reference/endpoint/translate/get-translation",
-        "api-reference/endpoint/translate/get-translate-cost",
-        "api-reference/endpoint/translate/post-translate"
-      ]
-    },
-    {
-      "group": "Voices",
-      "pages": [
-        "api-reference/endpoint/voices/get-voices"
+        "api-reference/endpoint/animate/get-animate",
+        "api-reference/endpoint/animate/get-animate-cost",
+        "api-reference/endpoint/animate/post-animate"
       ]
     },
     {
       "group": "Speak",
       "pages": [
-        "api-reference/endpoint/speak/get-speech",
+        "api-reference/endpoint/speak/get-speak",
         "api-reference/endpoint/speak/get-speak-cost",
         "api-reference/endpoint/speak/post-speak"
       ]
     },
     {
-      "group": "Animate",
+      "group": "Voices",
       "pages": [
-        "api-reference/endpoint/animate/get-animation",
-        "api-reference/endpoint/animate/get-animate-cost",
-        "api-reference/endpoint/animate/post-animate"
+        "api-reference/endpoint/voices/get-voices",
+        "api-reference/endpoint/voices/get-voice",
+        "api-reference/endpoint/voices/post-voice"
+      ]
+    },
+    {
+      "group": "Video (Deprecated)",
+      "pages": [
+        "api-reference/endpoint/video/get-lip-sync",
+        "api-reference/endpoint/video/get-lip-sync-cost",
+        "api-reference/endpoint/video/post-lip-sync"
       ]
     }
   ],
@@ -146,5 +140,5 @@
       "mode": "show"
     }
   },
-  "openapi": "https://api.synclabs.so/playground-json"
+  "openapi": "http://localhost:3001/playground-json"
 }

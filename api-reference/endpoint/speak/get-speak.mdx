@@ -1,0 +1,45 @@
+---
+openapi: get /speak/{id}
+description: "track the progress of your speech synthesis job and retrieve the download URL for your generated audio. this endpoint allows you to monitor your job's status and access the output once it's ready."
+---
+
+# introduction
+
+after you've submitted your text for speech synthesis using the `/speak` endpoint, the `/speak/{id}` endpoint is your resource for tracking the job's progress and obtaining your generated audio.
+
+# quick start
+
+## authentication
+before you can start using our api, you need to authenticate your requests. this is done using an `x-api-key` that links your requests to your account. if you don't have an api key yet, check out the instructions [here](https://docs.synclabs.so//api-reference/quickstart#generate-an-api-key) to obtain one.
+
+## track your speech synthesis jobs
+
+with your `x-api-key`, you're set to track the advancement of your speech synthesis tasks. to track your job via the playground [above](/api-reference/endpoint/speak/get-speak) follow the instructions below:
+
+<AccordionGroup>
+  <Accordion icon="book" title="via the api playground">
+    <Steps>
+      <Step title="retrieve your job id">
+        following your submission via the `/speak` endpoint, a job `id` will be provided. this `id` is essential for subsequent tracking activities.
+
+        <Frame caption={`example response from the post /speak endpoint`}>
+          <img src="/images/speak/post-speak-response.png" alt="Response from post /speak endpoint" />
+        </Frame>
+      </Step>
+      <Step title="monitor job status">
+        periodically querying the `/speak/{id}` endpoint with your job `id` will keep you updated on the synthesis process. this ensures you remain informed about the progress of your speech synthesis job.
+
+        <Frame caption={`insert your job id to check its status.`}>
+          <img src="/images/speak/get-speak-path.png" alt="Path params for get speak api" />
+        </Frame>
+      </Step>
+      <Step title="access your generated audio">
+        upon reaching a `completed` status, the endpoint's response will include a URL to download your generated audio. this audio.
+
+        <Frame caption={`the response will provide a \`url\` for downloading your audio.`}>
+          <img src="/images/speak/get-speak-response.png" alt="Response from get /speak endpoint" />
+        </Frame>
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>

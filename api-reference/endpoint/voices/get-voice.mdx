@@ -1,0 +1,47 @@
+---
+openapi: get /voices/{id}
+description: "access detailed information about a specific voice, including status and download url, after submission. this endpoint simplifies the process of tracking your voice synthesis job from start to finish."
+---
+
+# introduction
+
+after initiating a voice synthesis job, use the `/voices/{id}` endpoint to stay updated on its progress and to retrieve the synthesized audio.
+
+this guide helps you navigate the tracking process, ensuring you're always informed about your job's progress.
+
+# quick start
+
+## authentication
+before you can start using our api, you need to authenticate your requests. this is done using an `x-api-key` that links your requests to your account. if you don't have an api key yet, check out the instructions [here](https://docs.synclabs.so//api-reference/quickstart#generate-an-api-key) to obtain one.
+
+## monitor your voice synthesis jobs
+
+with an `x-api-key`, following the progress of your voice synthesis is easy. to check your job's status via the playground [above](/api-reference/endpoint/voices/get-voice), follow these instructions:
+
+<AccordionGroup>
+  <Accordion icon="microphone-alt" title="via the api playground">
+    <Steps>
+      <Step title="secure your job id">
+        upon sending your request for voice synthesis via the `/voices` endpoint, you will receive a job `id`. keep this id for tracking.
+
+        <Frame caption={`example response from the post /voices endpoint`}>
+          <img src="/images/voices/post-voices-response.png" alt="response from post /voices endpoint" />
+        </Frame>
+      </Step>
+      <Step title="verify job status">
+        use the `id` to query the `/voices/{id}` endpoint periodically. this keeps you informed about your job's progress towards completion.
+
+        <Frame caption={`input your job id in the endpoint to check progress.`}>
+          <img src="/images/voices/get-voices-path.png" alt="path params for get voices api" />
+        </Frame>
+      </Step>
+      <Step title="access your audio">
+        when the job status updates to `completed`, the response will provide a url to download your synthesized voice audio.
+
+        <Frame caption={`the response includes a \`url\` for downloading your synthesized audio.`}>
+          <img src="/images/voices/get-voices-response.png" alt="response from get /voices endpoint" />
+        </Frame>
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>

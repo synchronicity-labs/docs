@@ -1,0 +1,46 @@
+---
+openapi: get /animate/{id}
+description: "track the progress of your animation job and access the download URL for your animated video. this endpoint ensures you can monitor your job's status and collect the finished product once it's complete."
+---
+
+# introduction
+
+after initiating an animation job, the `/animate/{id}` endpoint serves as your gateway to updates. use it to monitor the progress of your animation job and access the download URL for your animated video.
+
+# quick start
+
+## authentication
+before you can start using our api, you need to authenticate your requests. this is done using an `x-api-key` that links your requests to your account. if you don't have an api key yet, check out the instructions [here](https://docs.synclabs.so//api-reference/quickstart#generate-an-api-key) to obtain one.
+
+## track your animation projects
+
+with an `x-api-key`, tracking the evolution of your animation projects becomes a straightforward task. to track the progress via the playground [above](/api-reference/endpoint/animate/get-animate) follow the instructions below:
+
+<AccordionGroup>
+  <Accordion icon="book" title="via the api playground">
+    <Steps>
+      <Step title="retrieve your job id">
+        once you've submitted your video, transcript, and voiceId via the `/animate` endpoint, you'll be assigned a job `id`. this `id` is crucial for subsequent tracking.
+
+        <Frame caption={`example response from the post /animate endpoint`}>
+          <img src="/images/animate/post-animate-response.png" alt="response from post /animate endpoint" />
+        </Frame>
+      </Step>
+      <Step title="monitor job status">
+        regularly query the `/animate/{id}` endpoint with your job `id` to stay informed about the status of your animation job.
+
+        <Frame caption={`input your job id to track its progress.`}>
+          <img src="/images/animate/get-animate-path.png" alt="path params for get animate api" />
+        </Frame>
+      </Step>
+      <Step title="access your animated video">
+        upon reaching a `completed` status, the response will not only confirm the job's success but also provide a URL for downloading your video, now animated with tailored audio.
+
+        <Frame caption={`the final response includes a download link for your video.`}>
+          <img src="/images/animate/get-animate-response.png" alt="response from get /animate endpoint" />
+        </Frame>
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>
+

@@ -1,3 +1,212 @@
 ---
 openapi: post /speak
+description: "convert text into natural-sounding speech with our advanced text-to-speech technology. this api tailors audio outputs to fit your needs, whether for narrations, voiceovers, or enhancing user experience with voice responses."
 ---
+
+# introduction
+sync. introduces a simple yet powerful way to bring your text to life. our `/speak` endpoint utilizes state-of-the-art technology to transform any text into spoken words, offering a range of voices and languages to choose from. it's designed for developers looking to add voice capabilities to their applications, making digital content more accessible and engaging.
+
+discover how to seamlessly integrate spoken audio into your projects for narrations, voiceovers, interactive voice responses, and more. our api is built to be straightforward and developer-friendly, enabling you to start creating voice content in no time.
+
+### api features
+
+<Card title="natural-sounding voices" icon="microphone-lines" iconType="duotone">
+  leverage our diverse set of high-quality, natural-sounding voices across various languages.
+</Card>
+<Card title="flexible integration" icon="puzzle-piece" iconType="duotone">
+  easily incorporate text-to-speech capabilities into your applications with minimal effort.
+</Card>
+<Card title="customization options" icon="sliders" iconType="duotone">
+  customize voice parameters to match your specific requirements, enhancing the listening experience.
+</Card>
+
+# available models
+
+explore our diverse range of models, each designed for specific syncing needs. selecting the appropriate model ensures optimal performance and results.
+
+<AccordionGroup>
+  <Accordion icon="star" title="sync-1.6.0 (top-tier sync)">
+    **model id:** 
+    ```bash 
+    sync-1.6.0
+    ```
+
+    **description:** our best mode, everything good about sync-1.5 but now with fluid, human-like mouth movements. When to switch to 1.5: (i) you want the mouth movements to be more visibly prominent, (ii) you observe visual artifacts at the scene boundaries.
+
+    **when to use:** opt for this model to address nuances in teeth visibility and mouth coloration for a flawless finish.
+  </Accordion>
+
+  <Accordion icon="circle-check" title="sync-1.5.0 (stable and tested)">
+    **model id:** 
+    ```bash 
+    sync-1.5.0
+    ```
+    **description:** accurate, high-resolution lipsync that has been proven to be reliable over a large variety of videos. Why choose this: if sync-1.6 model gives you feeble-looking lip movements, this version can perform better.
+
+    **why choose:** perfect when upgrading from earlier versions or seeking a stable, tested option when the latest beta model doesn't fit your project needs.
+  </Accordion>
+
+  <Accordion icon="bolt" title="wav2lip++ (fast and free to use)">
+    **model id:** 
+    ```bash
+    wav2lip++
+    ```
+
+    **description:** low-resolution, fast, lipsync that will be free forever. Not suitable for commercial use.
+
+    **why choose:** use this for fast processing of low-resolution videos or for testing purposes.
+  </Accordion>
+
+  <Accordion icon="box-archive" title="sync-1, sync-1.5.1-beta (legacy support)">
+    **model ids:** 
+    ```bash
+    sync-1
+    ```
+     ```bash
+    sync-1.5.1-beta
+    ```
+
+    **description:** offering compatibility for projects initiated on older standards, this model ensures continuity. automatically upgrades to sync-1.5.0 for enhanced outcomes.
+
+    **legacy advantage:** use this for ongoing projects needing legacy support with the benefit of automatic quality improvements.
+  </Accordion>
+</AccordionGroup>
+
+# built-in voices
+
+Discover our selection of built-in voices available for the animate api, or create a custom voice by following the guide [here](https://docs.synclabs.so//api-reference/endpoint/voices/post-voice).
+
+<AccordionGroup>
+  <Accordion icon="volume-high" title="default male">
+    **voice id:** 
+    ```bash 
+    e5361405-4967-446d-ad63-2f6ed8729c66
+    ```
+
+    **description:** young american man. is a strong and expressive narrator.
+  </Accordion>
+  <Accordion icon="volume-high" title="young american male">
+    **voice id:** 
+    ```bash 
+    11f2c933-f41a-423d-bafd-e61402fa5d0c
+    ```
+
+    **description:** a calm and assertive voice. great for news on tech and trendy topics.
+  </Accordion>
+  <Accordion icon="volume-high" title="young american female">
+    **voice id:** 
+    ```bash 
+    78112179-67dc-43b0-aa89-4897beec5e2f
+    ```
+
+    **description:** a young girl with a chill tone, perfect for casual conversations.
+  </Accordion>
+  <Accordion icon="volume-high" title="middle-aged american male">
+    **voice id:** 
+    ```bash 
+    8eb74242-f9ad-4580-97f2-acf2dc29259e
+    ```
+
+    **description:** an authorative and deep voice. great for audiobooks or news.
+  </Accordion>
+  <Accordion icon="volume-high" title="middle-aged british male">
+    **voice id:** 
+    ```bash 
+    5f42be17-326d-42b5-81dd-b2baffe60a1c
+    ```
+
+    **description:** a stern british male voice. great for audiobooks.
+  </Accordion>
+  <Accordion icon="volume-high" title="middle-aged british female">
+    **voice id:** 
+    ```bash 
+    99c6fcd9-47f4-4868-b700-c9d6e4f267e2
+    ```
+
+    **description:** a classy and mature voice. well suited for audiobooks
+  </Accordion>
+  <Accordion icon="volume-high" title="old american male">
+    **voice id:** 
+    ```bash 
+    c9c3f16a-d2ed-41b0-bce2-1881d86be408
+    ```
+
+    **description:** a deep, strong old male. great for narration.
+  </Accordion>
+  <Accordion icon="volume-high" title="old british male">
+    **voice id:** 
+    ```bash 
+    6a9ea962-f05d-48b9-8110-74a47bc08899
+    ```
+
+    **description:** old male british man. a deep and smooth voice for storytelling and podcasts
+  </Accordion>
+</AccordionGroup>
+
+
+# quick start
+
+## authentication
+before you can start using our api, you need to authenticate your requests. this is done using an `x-api-key` that links your requests to your account. if you don't have an api key yet, check out the instructions [here](https://docs.synclabs.so//api-reference/quickstart#generate-an-api-key) to obtain one.
+
+## create your speak request
+
+## translate your videos
+
+now that you have an `x-api-key`, you can test out the `/speak` endpoint. to try out the speak endpoint via the playground [above](/api-reference/endpoint/speak/post-speak) follow the instructions below:
+
+<AccordionGroup>
+  <Accordion icon="book" title="generate speech via the api playground">
+    <Steps>
+      <Step title="authorize">
+        enter your api key in the `x-api-key` field within the `Authorization` section.
+
+        <Frame caption={`enter your x-api-key in the authorization section`}>
+          <img src="/images/speak/post-speak-authorization.png" alt="authorize translate api" />
+        </Frame>
+      </Step>
+      <Step title="enter params">
+        enter the params in the body section:
+
+        <Frame caption={`
+        enter the video url, target language, and model in the body section
+        `}>
+          <img src="/images/speak/post-speak-body.png" alt="body params for translate api" />
+        </Frame>
+        <h3>example input</h3>
+        ```json
+        {
+          "transcript": "Hello, I hope you enjoy this audio!",
+          "targetLanguage": "e5361405-4967-446d-ad63-2f6ed8729c66", # default male voice
+        }
+        ```
+      
+      </Step>
+        <Step title="submit">
+        click the `Send` button to submit your speak request. after submission, you will receive a response that includes the `id` of your speak job, the current status, and details of the original submission.
+
+        <h3>understanding the response</h3>
+        the initial response provides you with essential details to track your job:
+
+        ```json
+        {
+          "id": "unique_job_id",
+          "status": "processing",
+          "step": "synthesizing",
+          "audioUrl": "",
+          "transcriptUrl": "https://example.com/audio.mp3",
+          "voiceId": "e5361405-4967-446d-ad63-2f6ed8729c66",
+          "creditsDeducted": 123,
+        }
+        ```
+
+        your job's `status` will start as `pending` and move to `processing`. use the returned `id` with the `GET /speak/{id}` endpoint to periodically poll for the status of your job. this polling is crucial for knowing when your video is ready.
+
+        <h3>polling for completion</h3>
+        periodically send requests to `GET /speak/{id}` with your job `id`. when the job status changes to `completed`, the response will include a URL to download your synced video.
+
+        Click [here](https://docs.synclabs.so//api-reference/endpoint/speak/get-speak#quick-start) to view instructions on polling for job completion with the [get translate api playground](https://docs.synclabs.so//api-reference/endpoint/speak/get-speak)
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>

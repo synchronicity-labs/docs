@@ -1,0 +1,47 @@
+---
+openapi: get /translate/{id}
+description: "monitor the progress of your translation job and obtain the download URL for your translated and synchronized video. this endpoint allows for efficient tracking of your project's status from submission to completion."
+---
+
+# introduction
+
+following your video submission for translation, the `/translate/{id}` endpoint to monitor progress and retrieve your video.
+
+keep tabs on your translation job's status and get the final, generated video.
+
+# quick start
+
+## authentication
+before you can start using our api, you need to authenticate your requests. this is done using an `x-api-key` that links your requests to your account. if you don't have an api key yet, check out the instructions [here](https://docs.synclabs.so//api-reference/quickstart#generate-an-api-key) to obtain one.
+
+## track your translation jobs
+
+with your `x-api-key` in hand, you can easily follow the progress of your translation projects. to track your video via the playground [above](/api-reference/endpoint/translate/get-translation) follow the instructions below:
+
+<AccordionGroup>
+  <Accordion icon="book" title="via the api playground">
+    <Steps>
+      <Step title="retrieve your job id">
+        upon submitting your video for translation via the `/translate` endpoint, you'll receive a job `id`. keep this `id` handy as it is used for tracking purposes.
+
+        <Frame caption={`example response from the post /translate endpoint`}>
+          <img src="/images/translate/post-translate-response.png" alt="response from post /translate endpoint" />
+        </Frame>
+      </Step>
+      <Step title="check job status">
+        with the `id`, query the `/translate/{id}` endpoint periodically to monitor your job's status. staying informed helps you anticipate the completion of your translation job.
+
+        <Frame caption={`insert your job id into the path to check its status.`}>
+          <img src="/images/translate/get-translate-path.png" alt="path params for get translate api" />
+        </Frame>
+      </Step>
+      <Step title="download your video">
+        once the job status changes to `completed`, a URL will be provided in the response to download your translated video.
+
+        <Frame caption={`look for the \`url\` field in the response for your download link.`}>
+          <img src="/images/translate/get-translate-response.png" alt="response from get /translate endpoint" />
+        </Frame>
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>

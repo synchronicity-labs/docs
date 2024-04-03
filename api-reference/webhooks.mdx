@@ -26,6 +26,8 @@ once your job completes or fails, a `POST` request will be sent to the `webhookU
 
 data will be returned regardless of the status of the job. the `error` field will return null if the job completed successfully.
 
+the data returned will match the format of the corresponding `get` request for the job. for example, if you use the `/lipsync/` endpoint, the data returned will match the format of the `/lipsync/{id}/` endpoint.
+
 webhooks simplify your workflow by eliminating the need for frequent status inquiries. you can continue other tasks while waiting for a webhook notification.
 
 

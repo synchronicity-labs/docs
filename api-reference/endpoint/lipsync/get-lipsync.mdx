@@ -1,0 +1,48 @@
+---
+openapi: get /lipsync/{id}
+description: "check the status of your lip-sync job and retrieve the download URL for your synchronized video. this endpoint ensures you can track your job's progress and access the final output once it's ready."
+---
+
+# introduction
+
+after submitting your video and audio for synchronization, use the `/lipsync/{id}` endpoint to monitor progress and retrieve your video.
+
+stay updated on your job's status and get the final, generated video.
+
+# quick start
+
+## authentication
+before you can start using our api, you need to authenticate your requests. this is done using an `x-api-key` that links your requests to your account. if you don't have an api key yet, check out the instructions [here](https://docs.synclabs.so//api-reference/quickstart#generate-an-api-key) to obtain one.
+
+## track your lipsync videos
+
+once you have your `x-api-key`, you're ready to start tracking the progress of your lipsync videos. to track your video via the playground [above](/api-reference/endpoint/lipsync/get-lipsync) follow the instructions below:
+
+<AccordionGroup>
+  <Accordion icon="book" title="via the api playground">
+    <Steps>
+      <Step title="retrieve your job id">
+        after submitting your audio and video files via the `/lipsync` endpoint, you'll receive a job `id`. keep this `id` handy for tracking.
+
+        <Frame caption={`example response from the post /lipsync endpoint`}>
+          <img src="/images/lipsync/post-lipsync-response.png" alt="response from post /lipsync endpoint" />
+        </Frame>
+      </Step>
+      <Step title="check job status">
+        use the `id` with the `/lipsync/{id}` endpoint to periodically check your job's status. this ensures you're up-to-date with the synchronization process.
+
+        <Frame caption={`replace the \`{id}\` in the path with your job id.`}>
+          <img src="/images/lipsync/get-lipsync-path.png" alt="path params for get lipsync api" />
+        </Frame>
+      </Step>
+      <Step title="download your video">
+        once the status updates to `completed`, the response will include a URL to download your synchronized video.
+
+        <Frame caption={`the response will include a \`url\` field with the download link.`}>
+          <img src="/images/lipsync/get-lipsync-response.png" alt="response from get /lipsync endpoint" />
+        </Frame>
+      </Step>
+    </Steps>      
+  </Accordion>
+</AccordionGroup>
+

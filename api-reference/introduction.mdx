@@ -4,13 +4,18 @@ description: 'learn how to use our apis to modify + synthesize humans in video'
 ---
 
 <Note>
-  [in beta] our parameters / spec will change over time.
+  our parameters / spec will change over time.
   we'll warn you as we make breaking changes - but these docs will 
   always reflect the latest build.
 </Note>
 
 ## welcome
-we're building sota models + hosting them w/ simple apis.
+welcome to our api documentation. we provide a suite of apis that allow you to manipulate and synthesize video and audio content with state-of-the-art (sota) models. whether you're looking to lipsync videos, animate static images, translate content across languages, or generate natural-sounding speech, our apis are designed to make these tasks simple and efficient.
+
+our apis are perfect for developers working on projects in content creation, localization, accessibility, and more. with just a few requests, you can enhance your video content, making it more engaging and accessible to a global audience.
+
+getting started is easy. all you need is an `x-api-key` to authenticate your requests. from there, you can explore our various api endpoints, each tailored to specific video and audio processing needs. check out the openapi spec for a detailed description of available operations.
+
 
 <Card
   title="sync. openapi spec"
@@ -22,16 +27,13 @@ we're building sota models + hosting them w/ simple apis.
 
 ## base url
 
-our apis are built on REST principles. we enforce HTTPS in every request to improve data security, integrity, and privacy.
+our apis adhere to REST principles and prioritize security, integrity, and privacy by enforcing HTTPS on all requests. start your requests with our base URL and explore the possibilities.
 
 all requests start w/ the following base URL:
 
 ```
 https://api.synclabs.so
 ```
-
-all video API endpoints are authenticated using Bearer tokens and picked up from the specification file.
-
 
 ## security and authentication
 
@@ -43,7 +45,7 @@ here's how you can include it in your requests:
 ```json
 {
   "method": "POST",
-  "url": "https://api.synclabs.so/video",
+  "url": "https://api.synclabs.so/lipsync",
   "headers": {
     "accept": "application/json",
     "x-api-key": "your_api_key_here",
@@ -53,13 +55,36 @@ here's how you can include it in your requests:
     "audioUrl": "https://example.com/path-to-audio.mp3",
     "videoUrl": "https://example.com/path-to-video.mp4",
     "synergize": true,
-    "maxCredits": 10,
-    "webhookUrl": "https://example.com/webhook",
-    "model": "sync-1.5.0"
+    "maxCredits": null,
+    "webhookUrl": null,
+    "model": "sync-1.6.0"
   }
 }
-
 ```
+
+checkout the [quickstart quide](https://docs.synclabs.so//api-reference/quickstart) to learn how to get your api key and start making requests.
+
+## checkout out our api endpoints
+
+dive into our comprehensive API offerings across various endpoint families designed to enhance your video and audio projects. each family serves a unique purpose, empowering your applications with advanced synchronization, translation, voice generation, and animation capabilities.
+
+<CardGroup cols={2}>
+  <Card title="lipsync" icon="rotate" href="/api-reference/endpoint/lipsync/post-lipsync">
+    synchronize video lip movements with any audio track using our advanced lipsync technology. perfect for dubbing and enhancing video content accessibility.
+  </Card>
+  <Card title="animate" icon="film" href="/api-reference/endpoint/animate/post-animate">
+    bring your videos to life by generating synchronized audio from text and animating videos accordingly. ideal for creating dynamic content from static assets.
+  </Card>
+  <Card title="translate" icon="language" href="/api-reference/endpoint/translate/post-translate">
+    expand your reach by translating and synchronizing videos into various languages. a must-have for content localization and reaching a global audience.
+  </Card>
+  <Card title="speak" icon="volume-high" href="/api-reference/endpoint/speak/post-speak">
+    convert text to natural-sounding speech with our Speak API. utilize a wide range of voices to add narration or dialogue to your projects.
+  </Card>
+  <Card title="voices" icon="users" href="/api-reference/endpoint/voices/post-voice">
+    explore a diverse selection of voices to find the perfect match for your audio projects. each voice brings a unique character and emotion to your content.
+  </Card>
+</CardGroup>
 
 
 

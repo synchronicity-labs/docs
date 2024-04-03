@@ -1,0 +1,149 @@
+---
+openapi: post /lipsync
+description: "easily synchronize video lip movements with any audio track. our cutting-edge technology offers rapid video processing without sacrificing quality. perfect for creating seamlessly dubbed videos, enhancing content accessibility, or localizing video content for global audiences."
+---
+
+# introduction
+sync. brings video content to life with unmatched lip-syncing technology. experience the magic of our `/lipsync` endpoint, capable of aligning video lip movements with any audio seamlessly.
+
+
+leverage our lip-sync API to transform videos in real-time, making content more engaging and accessible. perfect for dubbing, content localization, or just adding a fun twist to your videos. Dive into our documentation to start using the API in various development environments.
+
+## api features
+
+<Card title="precise synchronization" icon="rotate" iconType="duotone">
+  achieve perfect lip-syncing with advanced AI, enhancing viewer engagement.
+</Card>
+<Card title="rapid processing" icon="bolt" iconType="duotone">
+  enjoy fast video processing speeds without compromising on output quality.
+</Card>
+<Card title="flexible integration" icon="puzzle-piece" iconType="duotone">
+  easy integration into your existing workflows with comprehensive developer support.
+</Card>
+
+# available models
+
+explore our diverse range of models, each designed for specific syncing needs. selecting the appropriate model ensures optimal performance and results.
+
+<AccordionGroup>
+  <Accordion icon="star" title="sync-1.6.0 (top-tier sync)">
+    **model id:** 
+    ```bash 
+    sync-1.6.0
+    ```
+
+    **description:** our best mode, everything good about sync-1.5 but now with fluid, human-like mouth movements. When to switch to 1.5: (i) you want the mouth movements to be more visibly prominent, (ii) you observe visual artifacts at the scene boundaries.
+
+    **when to use:** opt for this model to address nuances in teeth visibility and mouth coloration for a flawless finish.
+  </Accordion>
+
+  <Accordion icon="circle-check" title="sync-1.5.0 (stable and tested)">
+    **model id:** 
+    ```bash 
+    sync-1.5.0
+    ```
+    **description:** accurate, high-resolution lipsync that has been proven to be reliable over a large variety of videos. Why choose this: if sync-1.6 model gives you feeble-looking lip movements, this version can perform better.
+
+    **why choose:** perfect when upgrading from earlier versions or seeking a stable, tested option when the latest beta model doesn't fit your project needs.
+  </Accordion>
+
+  <Accordion icon="bolt" title="wav2lip++ (fast and free to use)">
+    **model id:** 
+    ```bash
+    wav2lip++
+    ```
+
+    **description:** low-resolution, fast, lipsync that will be free forever. Not suitable for commercial use.
+
+    **why choose:** use this for fast processing of low-resolution videos or for testing purposes.
+  </Accordion>
+
+  <Accordion icon="box-archive" title="sync-1, sync-1.5.1-beta (legacy support)">
+    **model ids:** 
+    ```bash
+    sync-1
+    ```
+     ```bash
+    sync-1.5.1-beta
+    ```
+
+    **description:** offering compatibility for projects initiated on older standards, this model ensures continuity. automatically upgrades to sync-1.5.0 for enhanced outcomes.
+
+    **legacy advantage:** use this for ongoing projects needing legacy support with the benefit of automatic quality improvements.
+  </Accordion>
+</AccordionGroup>
+
+# quick start
+
+## authentication
+before you can start using our api, you need to authenticate your requests. this is done using an `x-api-key` that links your requests to your account. if you don't have an api key yet, check out the instructions [here](https://docs.synclabs.so//api-reference/quickstart#generate-an-api-key) to obtain one.
+
+## lipsync your videos
+
+once you have your `x-api-key`, you're ready to start syncing your videos' lip movements with any audio track. to sync your video via the playground [above](/api-reference/endpoint/lipsync/post-lipsync) follow the instructions below:
+
+<AccordionGroup>
+  <Accordion icon="book" title="lipsync your video via the api playground">
+  <Steps>
+    <Step title="authorize">
+      enter your api key in the `x-api-key` field within the `Authorization` section.
+
+      <Frame caption={`enter your x-api-key in the authorization section`}>
+        <img src="/images/lipsync/lipsync-authorize.png" alt="authorize lipsync api" />
+      </Frame>
+    </Step>
+    <Step title="enter params">
+      enter the params in the body section:
+
+      <Frame caption={`
+        enter the urls for your publicly accessible audio and video files into the respective fields and set other required parameters.
+      `}>
+        <img src="/images/lipsync/lipsync-body.png" alt="body params for lipsync api" />
+      </Frame>
+      <h3>example input</h3>
+      ```json
+      {
+        "audioUrl": "https://example.com/audio.mp3",
+        "videoUrl": "https://example.com/video.mp4",
+        "synergize": true,
+        "model": "sync-1.6.0"
+      }
+      ```
+      
+    </Step>
+      <Step title="submit">
+      click the `Send` button to submit your synchronization request. after submission, you will receive a response that includes the `id` of your lip-sync job, the current status, and URLs to the original submissions.
+
+      <h3>understanding the response</h3>
+      the initial response provides you with essential details to track your job:
+
+      ```json
+      {
+        "id": "unique_job_id",
+        "status": "processing",
+        "videoUrl": "",
+        "originalVideoUrl": "https://example.com/video.mp4",
+        "originalAudioUrl": "https://example.com/audio.mp3",
+        "synergize": true,
+        "creditsDeducted": 123,
+        "webhookUrl": null,
+      }
+      ```
+
+      your job's `status` will start as `pending` and move to `processing`. use the returned `id` with the `GET /lipsync/{id}` endpoint to periodically poll for the status of your job. this polling is crucial for knowing when your video is ready.
+
+      <h3>polling for completion</h3>
+      periodically send requests to `GET /lipsync/{id}` with your job `id`. when the job status changes to `completed`, the response will include a URL to download your synced video.
+
+      Click [here](https://docs.synclabs.so//api-reference/endpoint/lipsync/get-lipsync#quick-start) to view instructions on polling for job completion with the [get lipsync api playground](https://docs.synclabs.so//api-reference/endpoint/lipsync/get-lipsync)
+    </Step>
+  </Steps>
+
+  </Accordion>
+</AccordionGroup>
+
+
+with these methods, you can easily add lipsync functionality to your video editing, content creation, or localization workflows, enhancing the viewing experience for your audience.
+
+
+

@@ -12,14 +12,18 @@ Step into the realm of sync., where our suite of lip-sync models is engineered t
 - **precision:** they specifically fine-tune the mouth area to sync with the audio, leaving the rest of the video untouched.
 
 ## model selection guide
-### sync-1.5.1-beta
-top-tier sync: our most advanced model for the highest sync accuracy and lifelike skin tones.
-when to switch: if you notice issues with teeth appearance or mouth color, consider other models.
+### sync-1.6.0
+**our best model**: everything good about sync-1.5 but now with fluid, human-like mouth movements. When to switch to 1.5: (i) you want the mouth movements to be more visibly prominent, (ii) you observe visual artifacts at the scene boundaries. 
 ### sync-1.5.0
-stable and tested: this version is our backbone, proven across a variety of videos.
-why choose this: if the beta model doesn't meet your needs or you're moving up from an older model, this is your best bet.
-### sync-1
-legacy support: now surpassed by newer models, available via API, it automatically upgrades to sync 1.5.0 for better results.
+**stable and tested**: accurate, high-resolution lipsync that has been proven to be reliable over a large variety of videos. Why choose this: if sync-1.6 model gives you feeble-looking lip movements, this version can perform better.
+
+### wav2lip++
+**free to use**: low-resolution, fast, lipsync that will be free forever. Not suitable for commercial use.
+
+### sync-1; sync-1.5.1-beta
+**legacy support**: now surpassed by a new and better version in the form of sync-1.5.0. This endpoint is only available via API. It automatically upgrades to sync 1.5.0 under-the-hood to serve the best possible results.
+
+
 
 ## understanding model limitations
 To get the most out of our models, here's what you should keep in mind:
