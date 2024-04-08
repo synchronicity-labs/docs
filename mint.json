@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "name": "sync. docs",
   "logo": {
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg"
@@ -20,16 +20,16 @@
   },
   "topbarLinks": [
     {
-      "name": "Support",
+      "name": "support",
       "url": "https://syncbetatesters.slack.com/ssb/redirect#/shared-invite/email"
     },
     {
-      "name": "API Status",
+      "name": "api status",
       "url": "https://status.synclabs.so/"
     }
   ],
   "topbarCtaButton": {
-    "name": "Sign Up",
+    "name": "sign up",
     "url": "https://app.synclabs.so/signup"
   },
   "tabs": [
@@ -40,19 +40,19 @@
   ],
   "anchors": [
     {
-      "name": "Community",
+      "name": "community",
       "icon": "slack",
       "url": "https://syncbetatesters.slack.com/ssb/redirect#/shared-invite/email"
     },
     {
-      "name": "Changelog",
+      "name": "changelog",
       "icon": "newspaper",
       "url": "https://www.youtube.com/playlist?list=PLX8i0P_zBTmdSCgh6Tk1Ahs5nuK6iXFzw"
     }
   ],
   "navigation": [
     {
-      "group": "Get Started",
+      "group": "get started",
       "pages": [
         "introduction",
         "quickstart",
@@ -60,27 +60,26 @@
       ]
     },
     {
-      "group": "Resources",
+      "group": "resources",
       "pages": [
         "resources/example-projects",
         "resources/web-app-error-codes"
       ]
     },
     {
-      "group": "Video",
+      "group": "video",
       "pages": [
-        "video/lip-sync",
-        "video/translate"
+        "video/lipsync"
       ]
     },
     {
-      "group": "More",
+      "group": "more",
       "pages": [
         "more/billing"
       ]
     },
     {
-      "group": "API Documentation",
+      "group": "api documentation",
       "pages": [
         "api-reference/introduction",
         "api-reference/quickstart",
@@ -96,7 +95,7 @@
       ]
     },
         {
-      "group": "Animate",
+      "group": "animate",
       "pages": [
         "api-reference/endpoint/animate/get-animate",
         "api-reference/endpoint/animate/get-animate-cost",
@@ -104,7 +103,7 @@
       ]
     },
     {
-      "group": "Speak",
+      "group": "speak",
       "pages": [
         "api-reference/endpoint/speak/get-speak",
         "api-reference/endpoint/speak/get-speak-cost",
@@ -112,7 +111,7 @@
       ]
     },
     {
-      "group": "Voices",
+      "group": "voices",
       "pages": [
         "api-reference/endpoint/voices/get-voices",
         "api-reference/endpoint/voices/get-voice",
@@ -120,7 +119,7 @@
       ]
     },
     {
-      "group": "Video (Deprecated)",
+      "group": "video (deprecated)",
       "pages": [
         "api-reference/endpoint/video/get-lip-sync",
         "api-reference/endpoint/video/get-lip-sync-cost",
@@ -140,5 +139,5 @@
       "mode": "show"
     }
   },
-  "openapi": "http://localhost:3001/playground-json"
+  "openapi": "https://api.synclabs.so/playground-json"
 }
