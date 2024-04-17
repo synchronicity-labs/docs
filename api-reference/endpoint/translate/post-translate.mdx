@@ -194,13 +194,15 @@ with your `x-api-key` ready to go, you can now start translating your videos. to
         ```json
         {
           "id": "unique_job_id",
+          "createdAt": "date_time",
           "videoUrl": "",
           "status": "processing",
           "original_audio_url": "https://example.com/audio.mp3",
           "original_video_url": "https://example.com/video.mp4",
           "synergize": true,
           "creditsDeducted": 123,
-          "webhookUrl": {}
+          "webhookUrl": null,
+          "errorMessage": null
         }
         ```
 

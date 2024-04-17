@@ -191,12 +191,15 @@ now that you have an `x-api-key`, you can test out the `/speak` endpoint. to try
         ```json
         {
           "id": "unique_job_id",
+          "createdAt": "date_time",
           "status": "processing",
           "step": "synthesizing",
           "audioUrl": "",
           "transcriptUrl": "https://example.com/audio.mp3",
           "voiceId": "e5361405-4967-446d-ad63-2f6ed8729c66",
           "creditsDeducted": 123,
+          "webhookUrl": null,
+          "errorMessage": null
         }
         ```
 
