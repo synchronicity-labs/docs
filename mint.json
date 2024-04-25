@@ -119,6 +119,14 @@
       ]
     },
     {
+      "group": "video-messages",
+      "pages": [
+        "api-reference/endpoint/video-messages/get-video-messages",
+        "api-reference/endpoint/video-messages/get-video-messages-cost",
+        "api-reference/endpoint/video-messages/post-video-messages"
+      ]
+    },
+    {
       "group": "video (deprecated)",
       "pages": [
         "api-reference/endpoint/video/get-lip-sync",
