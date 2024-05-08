@@ -40,9 +40,9 @@
   ],
   "anchors": [
     {
-      "name": "community",
-      "icon": "slack",
-      "url": "https://syncbetatesters.slack.com/ssb/redirect#/shared-invite/email"
+      "name": "discord",
+      "icon": "discord",
+      "url": "https://discord.gg/Ky5mdQwF"
     },
     {
       "name": "changelog",
