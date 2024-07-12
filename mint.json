@@ -40,9 +40,9 @@
   ],
   "anchors": [
     {
-      "name": "community",
-      "icon": "slack",
-      "url": "https://syncbetatesters.slack.com/ssb/redirect#/shared-invite/email"
+      "name": "discord",
+      "icon": "discord",
+      "url": "https://discord.gg/Ky5mdQwF"
     },
     {
       "name": "changelog",
@@ -90,6 +90,7 @@
       "group": "lipsync",
       "pages": [
         "api-reference/endpoint/lipsync/get-lipsync",
+        "api-reference/endpoint/lipsync/get-lipsyncs",
         "api-reference/endpoint/lipsync/get-lipsync-cost",
         "api-reference/endpoint/lipsync/post-lipsync"
       ]
@@ -98,6 +99,7 @@
       "group": "animate",
       "pages": [
         "api-reference/endpoint/animate/get-animate",
+        "api-reference/endpoint/animate/get-animations",
         "api-reference/endpoint/animate/get-animate-cost",
         "api-reference/endpoint/animate/post-animate"
       ]
@@ -106,6 +108,7 @@
       "group": "speak",
       "pages": [
         "api-reference/endpoint/speak/get-speak",
+        "api-reference/endpoint/speak/get-speeches",
         "api-reference/endpoint/speak/get-speak-cost",
         "api-reference/endpoint/speak/post-speak"
       ]
