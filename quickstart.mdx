@@ -176,20 +176,22 @@ you can also create new api keys and manage existing ones at any time from the s
       <Step title="navigate to the api reference">
         visit the [API reference](/api-reference) to get started with the lip-sync api. the api reference provides a comprehensive guide to the endpoints and parameters available for syncing your audio and video.
 
-        we'll be playing around with the `POST /video` lip-sync endpoint which you can find [here](/api-reference/endpoint/video/post-lip-sync).
+        we'll be playing around with the `POST /lipsync` endpoint which you can find [here](/api-reference/endpoint/lipsync/post-lipsync).
       </Step>
       <Step title="setup authorization">
         provide your `x-api-key` for authentication to access the api. you'll need this for all requests to create and manage your lip-sync jobs. to manage your api keys, visit the [keys page](https://app.synclabs.so/keys) in the web app or checkout the instructions in the [get your api key](/quickstart#get-your-api-key) section above
 
-        <Frame>
-          <img src="/images/use-api-reference/enter-api-key.png" alt="enter api key" />
-        </Frame>
+        <Frame caption={`enter your x-api-key in the authorization section`}>
+        <img src="/images/lipsync/lipsync-authorize.png" alt="authorize lipsync api" />
+      </Frame>
       </Step>
       <Step title="enter body parameters">
         fill out the body parameters with the details of your lip-sync job. you'll provide URLs to the audio and video you want to sync, and set a few options to tailor the job to your needs.
         
-        <Frame>
-          <img src="/images/use-api-reference/enter-body-params.png" alt="enter api key" />
+        <Frame caption={`
+          enter the urls for your publicly accessible audio and video files into the respective fields and set other required parameters.
+        `}>
+          <img src="/images/lipsync/lipsync-body.png" alt="body params for lipsync api" />
         </Frame>
 
         <Expandable title="body params" defaultOpen>
@@ -216,7 +218,7 @@ you can also create new api keys and manage existing ones at any time from the s
         ensure all the required fields are filled out correctly to avoid any errors with your request. with everything set, you're ready to submit your job and let our synchronizer work its magic.
       </Step>
       <Step title="check job status">
-        after submitting your `POST` request, you'll receive a job `id`. use this `id` to make a `GET` request to `/video/{id}` and check the status of your lip-sync job.
+        after submitting your `POST` request, you'll receive a job `id`. use this `id` to make a `GET` request to `/lipsync/{id}` and check the status of your lipsync job.
 
         keep polling until the status is `completed` and you receive a URL to download your synced video.
       </Step>

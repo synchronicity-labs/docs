@@ -117,22 +117,6 @@
         "api-reference/endpoint/voices/get-voice",
         "api-reference/endpoint/voices/post-voice"
       ]
-    },
-    {
-      "group": "video-messages",
-      "pages": [
-        "api-reference/endpoint/video-messages/get-video-messages",
-        "api-reference/endpoint/video-messages/get-video-messages-cost",
-        "api-reference/endpoint/video-messages/post-video-messages"
-      ]
-    },
-    {
-      "group": "video (deprecated)",
-      "pages": [
-        "api-reference/endpoint/video/get-lip-sync",
-        "api-reference/endpoint/video/get-lip-sync-cost",
-        "api-reference/endpoint/video/post-lip-sync"
-      ]
     }
   ],
   "footerSocials": {
